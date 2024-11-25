@@ -3,4 +3,6 @@ project(compression_project)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(compression_project main.cpp)
+add_executable(compression_project main.cpp
+        src/Parser.cpp
+        include/Parser.h)
