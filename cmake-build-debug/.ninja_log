@@ -1,0 +1,10 @@
+# ninja log v6
+22	433	7549346406709895	CMakeFiles/compression_project.dir/src/Parser.cpp.obj.ddi	c79f228a00dd72db
+12	434	7549346406607007	CMakeFiles/compression_project.dir/main.cpp.obj.ddi	88fcf2d980121c6f
+434	489	7549346410831155	CMakeFiles/compression_project.dir/CXX.dd	b0f0aac0a657127e
+434	489	7549346410831155	C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/compression_project.dir/CXXModules.json	b0f0aac0a657127e
+530	1917	7549346411787453	CMakeFiles/compression_project.dir/src/Parser.cpp.obj	791ec8c98f4a0d87
+434	489	7549346410831155	CMakeFiles/compression_project.dir/main.cpp.obj.modmap	b0f0aac0a657127e
+434	489	7549346410831155	CMakeFiles/compression_project.dir/src/Parser.cpp.obj.modmap	b0f0aac0a657127e
+491	1890	7549346411395975	CMakeFiles/compression_project.dir/main.cpp.obj	e1eb1f6c604f6c01
+1917	2154	7549346425655725	compression_project.exe	8c358b8e84e1c6c8

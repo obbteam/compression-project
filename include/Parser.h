@@ -1,9 +1,8 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include <stdexcept>
-#include <filesystem>
 
 
 #ifndef COMPRESSION_PROJECT_PARSER_H
@@ -18,25 +17,25 @@ namespace comp {
         std::string operation;
 
         std::unordered_map<std::string, std::string> optionMap = {
-                {"-h", "--huffman"},
-                {"-l", "--lzw"},
-                {"-f", "--full"},
-                {"-c", "--compress"},
-                {"-d", "--decompress"}
+            {"-h", "--huffman"},
+            {"-l", "--lzw"},
+            {"-f", "--full"},
+            {"-c", "--compress"},
+            {"-d", "--decompress"}
         };
 
     public:
         // Parses the command line arguments
-        void parse(const std::string& commandLine);
+        void parse(const std::string &commandLine);
 
         // Accessor for input files
-        const std::vector<std::string>& getInputFiles() const;
+        const std::vector<std::string> &getInputFiles() const;
 
         // Accessor for compression method
-        const std::string& getCompressionMethod() const;
+        const std::string &getCompressionMethod() const;
 
         // Accessor for utility name
-        const std::string& getOperation() const;
+        const std::string &getOperation() const;
     };
 }
 #endif //COMPRESSION_PROJECT_PARSER_H
