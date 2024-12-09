@@ -49,52 +49,23 @@ cmake_ninja_workdir = C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-proj
 
 build cmake_object_order_depends_target_compression_project: phony || .
 
-build CMakeFiles/compression_project.dir/main.cpp.obj.ddi: CXX_SCAN__compression_project_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/main.cpp || cmake_object_order_depends_target_compression_project
-  DEP_FILE = CMakeFiles\compression_project.dir\main.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\compression_project.dir\main.cpp.obj.ddi
-  FLAGS = -g -std=gnu++20 -fansi-escape-codes -fcolor-diagnostics
-  OBJ_FILE = CMakeFiles\compression_project.dir\main.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\compression_project.dir\main.cpp.obj.ddi.i
-
-build CMakeFiles/compression_project.dir/main.cpp.obj: CXX_COMPILER__compression_project_scanned_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/main.cpp | CMakeFiles/compression_project.dir/main.cpp.obj.modmap || cmake_object_order_depends_target_compression_project CMakeFiles/compression_project.dir/CXX.dd
+build CMakeFiles/compression_project.dir/main.cpp.obj: CXX_COMPILER__compression_project_unscanned_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/main.cpp || cmake_object_order_depends_target_compression_project
   DEP_FILE = CMakeFiles\compression_project.dir\main.cpp.obj.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\compression_project.dir\main.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fansi-escape-codes -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles\compression_project.dir
   OBJECT_FILE_DIR = CMakeFiles\compression_project.dir
-  dyndep = CMakeFiles/compression_project.dir/CXX.dd
 
-build CMakeFiles/compression_project.dir/src/Parser.cpp.obj.ddi: CXX_SCAN__compression_project_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/src/Parser.cpp || cmake_object_order_depends_target_compression_project
-  DEP_FILE = CMakeFiles\compression_project.dir\src\Parser.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\compression_project.dir\src\Parser.cpp.obj.ddi
-  FLAGS = -g -std=gnu++20 -fansi-escape-codes -fcolor-diagnostics
-  OBJ_FILE = CMakeFiles\compression_project.dir\src\Parser.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\compression_project.dir\src\Parser.cpp.obj.ddi.i
-
-build CMakeFiles/compression_project.dir/src/Parser.cpp.obj: CXX_COMPILER__compression_project_scanned_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/src/Parser.cpp | CMakeFiles/compression_project.dir/src/Parser.cpp.obj.modmap || cmake_object_order_depends_target_compression_project CMakeFiles/compression_project.dir/CXX.dd
+build CMakeFiles/compression_project.dir/src/Parser.cpp.obj: CXX_COMPILER__compression_project_unscanned_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/src/Parser.cpp || cmake_object_order_depends_target_compression_project
   DEP_FILE = CMakeFiles\compression_project.dir\src\Parser.cpp.obj.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\compression_project.dir\src\Parser.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fansi-escape-codes -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles\compression_project.dir
   OBJECT_FILE_DIR = CMakeFiles\compression_project.dir\src
-  dyndep = CMakeFiles/compression_project.dir/CXX.dd
 
-build CMakeFiles/compression_project.dir/src/huffman.cpp.obj.ddi: CXX_SCAN__compression_project_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/src/huffman.cpp || cmake_object_order_depends_target_compression_project
-  DEP_FILE = CMakeFiles\compression_project.dir\src\huffman.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\compression_project.dir\src\huffman.cpp.obj.ddi
-  FLAGS = -g -std=gnu++20 -fansi-escape-codes -fcolor-diagnostics
-  OBJ_FILE = CMakeFiles\compression_project.dir\src\huffman.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\compression_project.dir\src\huffman.cpp.obj.ddi.i
-
-build CMakeFiles/compression_project.dir/src/huffman.cpp.obj: CXX_COMPILER__compression_project_scanned_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/src/huffman.cpp | CMakeFiles/compression_project.dir/src/huffman.cpp.obj.modmap || cmake_object_order_depends_target_compression_project CMakeFiles/compression_project.dir/CXX.dd
-  DEP_FILE = CMakeFiles\compression_project.dir\src\huffman.cpp.obj.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\compression_project.dir\src\huffman.cpp.obj.modmap
+build CMakeFiles/compression_project.dir/src/Huffman.cpp.obj: CXX_COMPILER__compression_project_unscanned_Debug C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/src/Huffman.cpp || cmake_object_order_depends_target_compression_project
+  DEP_FILE = CMakeFiles\compression_project.dir\src\Huffman.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fansi-escape-codes -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles\compression_project.dir
   OBJECT_FILE_DIR = CMakeFiles\compression_project.dir\src
-  dyndep = CMakeFiles/compression_project.dir/CXX.dd
-
-build CMakeFiles/compression_project.dir/CXX.dd | C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/compression_project.dir/CXXModules.json CMakeFiles/compression_project.dir/main.cpp.obj.modmap CMakeFiles/compression_project.dir/src/Parser.cpp.obj.modmap CMakeFiles/compression_project.dir/src/huffman.cpp.obj.modmap: CXX_DYNDEP__compression_project_Debug CMakeFiles/compression_project.dir/main.cpp.obj.ddi CMakeFiles/compression_project.dir/src/Parser.cpp.obj.ddi CMakeFiles/compression_project.dir/src/huffman.cpp.obj.ddi | C$:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/compression_project.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -104,7 +75,7 @@ build CMakeFiles/compression_project.dir/CXX.dd | C$:/Users/obbte/OneDrive/Saxio
 #############################################
 # Link the executable compression_project.exe
 
-build compression_project.exe: CXX_EXECUTABLE_LINKER__compression_project_Debug CMakeFiles/compression_project.dir/main.cpp.obj CMakeFiles/compression_project.dir/src/Parser.cpp.obj CMakeFiles/compression_project.dir/src/huffman.cpp.obj
+build compression_project.exe: CXX_EXECUTABLE_LINKER__compression_project_Debug CMakeFiles/compression_project.dir/main.cpp.obj CMakeFiles/compression_project.dir/src/Parser.cpp.obj CMakeFiles/compression_project.dir/src/Huffman.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\compression_project.dir

@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.29)
+cmake_minimum_required(VERSION 3.22)
 project(compression_project)
 
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(compression_project main.cpp
         src/Parser.cpp
-        include/Parser.h
-        src/huffman.cpp)
+        src/Huffman.cpp
+)

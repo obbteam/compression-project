@@ -61,8 +61,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-8rbgwi"
-      binary: "C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-8rbgwi"
+      source: "C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-852x62"
+      binary: "C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-852x62"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/msys64/clang64/bin/clang-scan-deps.exe"
       CMAKE_C_FLAGS: ""
@@ -72,16 +72,16 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-8rbgwi'
+        Change Dir: 'C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-852x62'
         
-        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.2.1/bin/ninja/win/x64/ninja.exe" -v cmTC_a1e57
-        [1/2] C:\\msys64\\clang64\\bin\\clang.exe   -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_a1e57.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.2.1/bin/ninja/win/x64/ninja.exe" -v cmTC_ef258
+        [1/2] C:\\msys64\\clang64\\bin\\clang.exe   -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_ef258.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"
         clang version 18.1.8
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
          (in-process)
-         "C:/msys64/clang64/bin/clang.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-8rbgwi -v -fcoverage-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-8rbgwi -resource-dir C:/msys64/clang64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_a1e57.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/18/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -x c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"\x0d
+         "C:/msys64/clang64/bin/clang.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-852x62 -v -fcoverage-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-852x62 -resource-dir C:/msys64/clang64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_ef258.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/18/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -x c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"\x0d
         clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-w64-windows-gnu\x0d
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"\x0d
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"\x0d
@@ -90,12 +90,12 @@ events:
          C:/msys64/clang64/lib/clang/18/include\x0d
          C:/msys64/clang64/include\x0d
         End of search list.\x0d
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\clang.exe  -v -Wl,-v CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -o cmTC_a1e57.exe -Wl,--out-implib,libcmTC_a1e57.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\clang.exe  -v -Wl,-v CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -o cmTC_ef258.exe -Wl,--out-implib,libcmTC_ef258.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
         clang version 18.1.8
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
-         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_a1e57.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/18/lib/windows -v CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_a1e57.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_ef258.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/18/lib/windows -v CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_ef258.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
         LLD 18.1.8 (compatible with GNU linkers)
         
       exitCode: 0
@@ -127,16 +127,16 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-8rbgwi']
+        ignore line: [Change Dir: 'C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-852x62']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.2.1/bin/ninja/win/x64/ninja.exe" -v cmTC_a1e57]
-        ignore line: [[1/2] C:\\msys64\\clang64\\bin\\clang.exe   -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_a1e57.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"]
+        ignore line: [Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.2.1/bin/ninja/win/x64/ninja.exe" -v cmTC_ef258]
+        ignore line: [[1/2] C:\\msys64\\clang64\\bin\\clang.exe   -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_ef258.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"]
         ignore line: [clang version 18.1.8]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/msys64/clang64/bin/clang.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-8rbgwi -v -fcoverage-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-8rbgwi -resource-dir C:/msys64/clang64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_a1e57.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/18/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -x c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"\x0d]
+        ignore line: [ "C:/msys64/clang64/bin/clang.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-852x62 -v -fcoverage-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-852x62 -resource-dir C:/msys64/clang64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_ef258.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/18/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -x c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"\x0d]
         ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-w64-windows-gnu\x0d]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"\x0d]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"\x0d]
@@ -145,18 +145,18 @@ events:
         ignore line: [ C:/msys64/clang64/lib/clang/18/include\x0d]
         ignore line: [ C:/msys64/clang64/include\x0d]
         ignore line: [End of search list.\x0d]
-        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\clang.exe  -v -Wl -v CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj -o cmTC_a1e57.exe -Wl --out-implib libcmTC_a1e57.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\clang.exe  -v -Wl -v CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj -o cmTC_ef258.exe -Wl --out-implib libcmTC_ef258.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
         ignore line: [clang version 18.1.8]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
-        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_a1e57.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/18/lib/windows -v CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_a1e57.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_ef258.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/18/lib/windows -v CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_ef258.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
           arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_a1e57.exe] ==> ignore
+          arg [cmTC_ef258.exe] ==> ignore
           arg [C:/msys64/clang64/lib/crt2.o] ==> obj [C:/msys64/clang64/lib/crt2.o]
           arg [C:/msys64/clang64/lib/crtbegin.o] ==> obj [C:/msys64/clang64/lib/crtbegin.o]
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
@@ -164,9 +164,9 @@ events:
           arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
           arg [-LC:/msys64/clang64/lib/clang/18/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/18/lib/windows]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_a1e57.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_ef258.dir/CMakeCCompilerABI.c.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_a1e57.dll.a] ==> ignore
+          arg [libcmTC_ef258.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -223,8 +223,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kccf14"
-      binary: "C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kccf14"
+      source: "C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sc15dm"
+      binary: "C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sc15dm"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/msys64/clang64/bin/clang-scan-deps.exe"
       CMAKE_CXX_FLAGS: ""
@@ -235,16 +235,16 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kccf14'
+        Change Dir: 'C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sc15dm'
         
-        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.2.1/bin/ninja/win/x64/ninja.exe" -v cmTC_e8b65
-        [1/2] C:\\msys64\\clang64\\bin\\clang++.exe   -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_e8b65.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.2.1/bin/ninja/win/x64/ninja.exe" -v cmTC_d9637
+        [1/2] C:\\msys64\\clang64\\bin\\clang++.exe   -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_d9637.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
         clang version 18.1.8
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
          (in-process)
-         "C:/msys64/clang64/bin/clang++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kccf14 -v -fcoverage-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kccf14 -resource-dir C:/msys64/clang64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_e8b65.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/18/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -x c++ "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
+         "C:/msys64/clang64/bin/clang++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sc15dm -v -fcoverage-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sc15dm -resource-dir C:/msys64/clang64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_d9637.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/18/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -x c++ "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
         clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-w64-windows-gnu
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"\x0d
@@ -255,12 +255,12 @@ events:
          C:/msys64/clang64/lib/clang/18/include\x0d
          C:/msys64/clang64/include\x0d
         End of search list.\x0d
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\clang++.exe  -v -Wl,-v CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_e8b65.exe -Wl,--out-implib,libcmTC_e8b65.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\clang++.exe  -v -Wl,-v CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_d9637.exe -Wl,--out-implib,libcmTC_d9637.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
         clang version 18.1.8
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
-         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_e8b65.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/18/lib/windows -v CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_e8b65.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_d9637.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/18/lib/windows -v CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_d9637.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
         LLD 18.1.8 (compatible with GNU linkers)
         
       exitCode: 0
@@ -294,16 +294,16 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kccf14']
+        ignore line: [Change Dir: 'C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sc15dm']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.2.1/bin/ninja/win/x64/ninja.exe" -v cmTC_e8b65]
-        ignore line: [[1/2] C:\\msys64\\clang64\\bin\\clang++.exe   -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_e8b65.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"]
+        ignore line: [Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.2.1/bin/ninja/win/x64/ninja.exe" -v cmTC_d9637]
+        ignore line: [[1/2] C:\\msys64\\clang64\\bin\\clang++.exe   -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_d9637.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"]
         ignore line: [clang version 18.1.8]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/msys64/clang64/bin/clang++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kccf14 -v -fcoverage-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kccf14 -resource-dir C:/msys64/clang64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_e8b65.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/18/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -x c++ "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"]
+        ignore line: [ "C:/msys64/clang64/bin/clang++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sc15dm -v -fcoverage-compilation-dir=C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sc15dm -resource-dir C:/msys64/clang64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_d9637.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/18/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -x c++ "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"]
         ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-w64-windows-gnu]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"\x0d]
@@ -314,18 +314,18 @@ events:
         ignore line: [ C:/msys64/clang64/lib/clang/18/include\x0d]
         ignore line: [ C:/msys64/clang64/include\x0d]
         ignore line: [End of search list.\x0d]
-        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\clang++.exe  -v -Wl -v CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_e8b65.exe -Wl --out-implib libcmTC_e8b65.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\clang++.exe  -v -Wl -v CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_d9637.exe -Wl --out-implib libcmTC_d9637.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
         ignore line: [clang version 18.1.8]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
-        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_e8b65.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/18/lib/windows -v CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_e8b65.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_d9637.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/18/lib/windows -v CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_d9637.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/18/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
           arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_e8b65.exe] ==> ignore
+          arg [cmTC_d9637.exe] ==> ignore
           arg [C:/msys64/clang64/lib/crt2.o] ==> obj [C:/msys64/clang64/lib/crt2.o]
           arg [C:/msys64/clang64/lib/crtbegin.o] ==> obj [C:/msys64/clang64/lib/crtbegin.o]
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
@@ -333,9 +333,9 @@ events:
           arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
           arg [-LC:/msys64/clang64/lib/clang/18/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/18/lib/windows]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_e8b65.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [CMakeFiles/cmTC_d9637.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_e8b65.dll.a] ==> ignore
+          arg [libcmTC_d9637.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
