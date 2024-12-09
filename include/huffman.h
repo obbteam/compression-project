@@ -18,6 +18,7 @@ public:
     void print_dict() const;
 
 private:
+    int m_size;
     std::ifstream m_file;
     std::unordered_map<uint8_t, int> m_dictionary;
 };
