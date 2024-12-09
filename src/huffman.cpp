@@ -20,7 +20,7 @@ Huffman::Huffman(std::ifstream &file): m_file(std::move(file)), m_dictionary() {
         }
     }
 
-    std::sort(m_dictionary.begin()->second, m_dictionary.end()->second);
+    std::sort(m_dictionary.begin(), m_dictionary.end());
 }
 
 void Huffman::print_dict() const {
