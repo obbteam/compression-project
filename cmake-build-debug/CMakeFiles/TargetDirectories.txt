@@ -1,3 +1,0 @@
-C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/compression_project.dir
-C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/obbte/OneDrive/Saxion/YEAR2/APC/compression-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
