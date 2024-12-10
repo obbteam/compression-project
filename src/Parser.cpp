@@ -10,18 +10,15 @@ namespace comp {
             args.push_back(current);
         }
 
-        if (args.size() < 3) {
-            throw std::invalid_argument("Usage: comp <file1> [file2 ...] <compression options> <operation>");
-        }
-
-        if (args[0] != expectedUtilityName) {
-            throw std::invalid_argument("Error: The command must start with 'comp'.");
+        if (args.size() < 4) {
+            throw std::invalid_argument("Usage: <file1> [file2 ...]/<directory> <compression options> <operation> <file/directory>");
         }
 
         bool methodFound = false;
         bool operationFound = false;
+        bool fileFolderFound = false;
 
-        for (size_t i = 1; i < args.size(); ++i) {
+        for (size_t i = 0; i < args.size(); ++i) {
             const std::string& arg = args[i];
 
             if (arg[0] == '-') {
@@ -39,6 +36,12 @@ namespace comp {
                             }
                             operation = optionMap[shortOpt];
                             operationFound = true;
+                        } else if (shortOpt == "-F" || shortOpt == "-D") {
+                            if (fileFolderFound) {
+                                throw std::invalid_argument("The item either needs to be a file or a directory.");
+                            }
+                            is_dir = optionMap[shortOpt];
+                            fileFolderFound = true;
                         }
                     }
                 }
@@ -56,6 +59,13 @@ namespace comp {
         if (operation.empty()) {
             throw std::invalid_argument("No operation specified (use -c or -d).");
         }
+        if (is_dir.empty()) {
+            throw std::invalid_argument("No indication of a file or a directory was provided.");
+        }
+
+        if (is_dir == "--directory" && inputFiles.size() > 1) {
+            throw std::invalid_argument("Cannot compress more than one directory.");
+        }
     }
 
 
@@ -70,5 +80,9 @@ namespace comp {
 
     const std::string& Parser::getOperation() const {
         return operation;
+    }
+
+    const std::string& Parser::getFileFolder() const {
+        return is_dir;
     }
 }

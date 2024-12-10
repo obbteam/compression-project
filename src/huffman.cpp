@@ -21,16 +21,17 @@ Huffman::Huffman(std::ifstream &file): m_file(std::move(file)), m_dictionary() {
             // increment the frequency of the byte in the dict
             result->second++;
         }
-        m_sorted = std::vector<std::pair<uint8_t, int> >(m_dictionary.begin(), m_dictionary.end());
 
-        std::sort(m_sorted.begin(), m_sorted.end(),
-                  [](const std::pair<uint8_t, int> &a, const std::pair<uint8_t, int> &b) {
-                      return a.second < b.second;
-                  });
     }
+    m_sorted = std::vector<std::pair<uint8_t, int> >(m_dictionary.begin(), m_dictionary.end());
+
+    std::sort(m_sorted.begin(), m_sorted.end(),
+              [](const std::pair<uint8_t, int> &a, const std::pair<uint8_t, int> &b) {
+                  return a.second < b.second;
+              });
 
     print_sorted();
-    auto object = BinTree(get_sorted());
+    auto object = BinTree(m_sorted);
     object.print_tree();
 }
 
@@ -46,9 +47,11 @@ void Huffman::print_sorted() const {
     }
 }
 
+/*
 std::vector<std::pair<uint8_t, int> > Huffman::get_sorted() const {
     return m_sorted;
 }
+*/
 
 
 Huffman::~Huffman() {

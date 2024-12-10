@@ -45,6 +45,8 @@ int main(int argc, char *argv[]) {
         std::cout << "\nCompression Method: " << parser.getCompressionMethod() << "\n";
 
         std::cout << "Operation: " << parser.getOperation() << "\n";
+
+        std::cout << "Item type: " << parser.getFileFolder() << "\n";
     } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << "\n";
         return 1;

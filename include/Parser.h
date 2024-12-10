@@ -15,13 +15,16 @@ namespace comp {
         std::vector<std::string> inputFiles;
         std::string compressionMethod;
         std::string operation;
+        std::string is_dir;
 
         std::unordered_map<std::string, std::string> optionMap = {
             {"-h", "--huffman"},
             {"-l", "--lzw"},
             {"-f", "--full"},
             {"-c", "--compress"},
-            {"-d", "--decompress"}
+            {"-d", "--decompress"},
+            {"-F", "--file"},
+            {"-D", "--directory"}
         };
 
     public:
@@ -36,6 +39,9 @@ namespace comp {
 
         // Accessor for utility name
         const std::string &getOperation() const;
+
+        // Accessor for is_dir
+        const std::string &getFileFolder() const;
     };
 }
 #endif //COMPRESSION_PROJECT_PARSER_H

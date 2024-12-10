@@ -27,7 +27,7 @@ public:
 
     int get_size() const;
 
-    std::vector<std::pair<uint8_t, int> > get_sorted() const;
+//    std::vector<std::pair<uint8_t, int> > get_sorted() const;
 
 private:
     int m_size;
