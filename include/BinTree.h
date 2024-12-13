@@ -36,16 +36,15 @@ public:
 
     ~BinTree() = default;
 
-    Node *build_tree();
-
+    Node* build_tree();
 
     void print_tree();
 
     void print_root(Node *root);
 
 private:
-    Node *m_root;
-    std::vector<Node *> m_list;
+    Node* m_root;
+    std::vector<Node*> m_list{};
 };
 
 

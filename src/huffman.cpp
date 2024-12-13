@@ -8,7 +8,7 @@
 #include "../include/BinTree.h"
 #include "../include/huffman.h"
 
-Huffman::Huffman(std::ifstream &file): m_file(std::move(file)), m_dictionary() {
+Huffman::Huffman(std::ifstream &file): m_file(std::move(file)), m_dictionary(), m_size{0} {
     while (m_file.peek() != EOF) {
         uint8_t byte = m_file.get();
         ++m_size;
@@ -21,7 +21,6 @@ Huffman::Huffman(std::ifstream &file): m_file(std::move(file)), m_dictionary() {
             // increment the frequency of the byte in the dict
             result->second++;
         }
-
     }
     m_sorted = std::vector<std::pair<uint8_t, int> >(m_dictionary.begin(), m_dictionary.end());
 
@@ -33,6 +32,10 @@ Huffman::Huffman(std::ifstream &file): m_file(std::move(file)), m_dictionary() {
     print_sorted();
     auto object = BinTree(m_sorted);
     object.print_tree();
+    std::cout << std::endl;
+    // todo 1 - traverse binary tree to encode a byte
+    // todo 2 - encode file in the .groza format
+    // todo 3 - decoding using the dictionary in the file
 }
 
 void Huffman::print_dict() const {
