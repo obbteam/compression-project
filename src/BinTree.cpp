@@ -57,12 +57,15 @@ Node *BinTree::build_tree() {
         if (m_list.empty()) {
             m_list.insert(m_list.begin(), std::move(node3));
         } else {
+            bool inserted = false;
             for (int i = 0; i < m_list.size(); i++) {
                 if (m_list[i]->get_freq() > node3->get_freq()) {
                     m_list.insert(m_list.begin() + i, std::move(node3));
+                    inserted = true;
                     break;
                 }
             }
+            if(!inserted) m_list.insert(m_list.begin(), std::move(node3));
         }
     }
     return m_list[0].get();
