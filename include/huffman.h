@@ -7,6 +7,7 @@
 #include <fstream>
 #include <unordered_map>
 #include <vector>
+#include "BinTree.h"
 
 
 #endif //HUFFMAN_H
@@ -21,17 +22,22 @@ public:
 
     void print_sorted() const;
 
+    void print_encoded() const;
+
     // create tree
 
     // create file
 
     int get_size() const;
 
-    //    std::vector<std::pair<uint8_t, int> > get_sorted() const;
+    void traverse_tree(Node *root_node);
 
 private:
     int m_size;
     std::ifstream m_file;
-    std::unordered_map<uint8_t, int> m_dictionary;
+    std::unordered_map<uint8_t, int> m_dictionary{};
     std::vector<std::pair<uint8_t, int> > m_sorted;
+    std::unordered_map<uint8_t, uint16_t> m_encoded{};
+
+    void create_code(Node *root_node, uint8_t length, uint8_t code);
 };

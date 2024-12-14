@@ -10,11 +10,13 @@
 
 class Node {
 public:
-    explicit Node(int freq);
+    explicit Node(const uint8_t &data, int freq);
 
-    Node(int freq, Node *left, Node *right);
+    Node(int freq, std::unique_ptr<Node> left, std::unique_ptr<Node> right);
 
     int get_freq() const;
+
+    uint8_t* get_data();
 
     Node *left() const;
 
@@ -23,9 +25,10 @@ public:
     ~Node() = default;
 
 private:
-    Node *m_left;
-    Node *m_right;
+    std::unique_ptr<Node> m_left;
+    std::unique_ptr<Node> m_right;
 
+    std::unique_ptr<uint8_t> m_data;
     int m_frequency;
 };
 
@@ -36,15 +39,17 @@ public:
 
     ~BinTree() = default;
 
-    Node* build_tree();
+    Node *build_tree();
 
     void print_tree();
 
-    void print_root(Node *root);
+    void print_root(const Node *root);
+
+    Node *get_root() const;
 
 private:
-    Node* m_root;
-    std::vector<Node*> m_list{};
+    Node *m_root;
+    std::vector<std::unique_ptr<Node> > m_list{};
 };
 
 

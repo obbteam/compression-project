@@ -8,10 +8,17 @@
 
 #include <iostream>
 
-Node::Node(const int freq) : m_left{nullptr}, m_right{nullptr}, m_frequency{freq} {
+Node::Node(const uint8_t &data, const int freq) : m_left{nullptr},
+                                                  m_right{nullptr},
+                                                  m_frequency{freq},
+                                                  m_data(std::make_unique<uint8_t>(data)) {
 }
 
-Node::Node(int freq, Node *left, Node *right) : m_left{left}, m_right{right}, m_frequency{freq} {
+Node::Node(int freq, std::unique_ptr<Node> left, std::unique_ptr<Node> right)
+    : m_left{std::move(left)},
+      m_right{std::move(right)},
+      m_frequency{freq},
+      m_data{nullptr} {
 }
 
 int Node::get_freq() const {
@@ -19,18 +26,22 @@ int Node::get_freq() const {
 }
 
 Node *Node::left() const {
-    return m_left;
+    return m_left.get();
 }
 
 Node *Node::right() const {
-    return m_right;
+    return m_right.get();
+}
+
+uint8_t *Node::get_data() {
+    return m_data.get();
 }
 
 
 BinTree::BinTree(const std::vector<std::pair<uint8_t, int> > &list) : m_root(nullptr) {
     for (auto &it: list) {
-        Node *node = new Node(it.second);
-        m_list.push_back(node);
+        auto node = std::make_unique<Node>(it.first, it.second);
+        m_list.push_back(std::move(node));
     }
 
     m_root = build_tree();
@@ -39,29 +50,31 @@ BinTree::BinTree(const std::vector<std::pair<uint8_t, int> > &list) : m_root(nul
 // todo use heap to reach O(n*log n)
 Node *BinTree::build_tree() {
     while (m_list.size() > 1) {
-        auto node3 = new Node(m_list[0]->get_freq() + m_list[1]->get_freq(), m_list[0], m_list[1]);
+        auto node3 = std::make_unique<Node>(m_list[0]->get_freq() + m_list[1]->get_freq(), std::move(m_list[0]),
+                                            std::move(m_list[1]));
         m_list.erase(m_list.begin(), m_list.begin() + 2);
 
         if (m_list.empty()) {
-            m_list.insert(m_list.begin(), node3);
+            m_list.insert(m_list.begin(), std::move(node3));
         } else {
             for (int i = 0; i < m_list.size(); i++) {
                 if (m_list[i]->get_freq() > node3->get_freq()) {
-                    m_list.insert(m_list.begin() + i, node3);
+                    m_list.insert(m_list.begin() + i, std::move(node3));
                     break;
                 }
             }
         }
     }
-    return m_list[0];
+    return m_list[0].get();
 }
+
 
 void BinTree::print_tree() {
     auto node = m_root;
     print_root(node);
 }
 
-void BinTree::print_root(Node *root) {
+void BinTree::print_root(const Node *root) {
     if (root == nullptr) {
         return;
     };
@@ -69,4 +82,8 @@ void BinTree::print_root(Node *root) {
     std::cout << root->get_freq() << " ";
     print_root(root->left());
     print_root(root->right());
+}
+
+Node *BinTree::get_root() const {
+    return m_root;
 }
