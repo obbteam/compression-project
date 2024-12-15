@@ -7,7 +7,11 @@
 #include <fstream>
 #include <unordered_map>
 #include <vector>
+#include <bitset>
+#include <iostream>
+#include <algorithm>
 #include "BinTree.h"
+#include "BitBuffer.h"
 
 
 #endif //HUFFMAN_H
@@ -31,6 +35,8 @@ public:
     int get_size() const;
 
     void traverse_tree(Node *root_node);
+
+    void outputfile(std::ofstream& file);
 
 private:
     int m_size;

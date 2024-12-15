@@ -7,4 +7,6 @@ add_executable(compression_project main.cpp
         src/Parser.cpp
         src/huffman.cpp
         src/BinTree.cpp
+        include/BitBuffer.h
+        src/BitBuffer.cpp
 )

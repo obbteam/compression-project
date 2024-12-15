@@ -2,10 +2,7 @@
 // Created by obbte on 03.12.2024.
 //
 
-#include <iostream>
-#include <algorithm>
 
-#include "../include/BinTree.h"
 #include "../include/huffman.h"
 
 Huffman::Huffman(std::ifstream &file): m_file(std::move(file)), m_size{0} {
@@ -88,6 +85,58 @@ void Huffman::create_code(Node *root_node, uint8_t length, uint8_t code) {
     create_code(root_node->left(), length + 1, code << 1);
     // shift to the left and create one at the end
     create_code(root_node->right(), length + 1, (code << 1) | 1);
+}
+
+
+void Huffman::outputfile(std::ofstream &file) {
+
+
+    if (!m_file.is_open()) {
+        throw std::runtime_error("Input file stream is not open.");
+    }
+    m_file.seekg(0, std::ios::beg);
+
+
+
+    // Calculating the size of the dictionary + the number of the size
+    // 1 byte for the char, 2 bytes for the size/encoded, 1 byte for the space (+ 2 at the end for the uint16_t for the size)
+    uint16_t size_of_dict = m_encoded.size()*4 + 2;
+    file << size_of_dict;
+
+
+    for (const auto &i : m_encoded) {
+        file << i.first << i.second << ' ';
+
+    }
+
+
+    // Reset beginning of the stream
+    m_file.seekg(0, std::ios::beg);
+    auto bitBuffer = BitBuffer(file);
+
+    // For each character in the original file, write an encoded version to the compressed file.
+    uint64_t new_size = 0;
+    while (m_file.peek() != EOF) {
+        uint8_t byte = m_file.get();
+
+        // Getting encoded version and its size
+        uint16_t encoded_value = m_encoded[byte];
+        int encoded_size = encoded_value & 0xFF;
+        uint8_t encoded_byte = (encoded_value >> 8) & 0xFF;
+        std::cout << '\n' << "For the " << byte << " the size is " << encoded_size << " and the encryption is " << std::bitset<8>(encoded_byte);
+
+        // Adding encoded version bit by bit into the bitBuffer
+        for(int i = encoded_size - 1; i >=0; i--)
+        {
+            int bit = (encoded_byte >> i) & 0x1;
+            bitBuffer.write_bit(bit);
+            new_size++;
+        }
+    }
+
+    while (bitBuffer.get_size() != 0) bitBuffer.write_bit(0);
+    file << new_size;
+    file.close();
 }
 
 

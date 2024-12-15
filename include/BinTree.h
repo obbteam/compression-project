@@ -6,6 +6,7 @@
 #define BINTREE_H
 #include <cstdint>
 #include <vector>
+#include <memory>
 
 
 class Node {
