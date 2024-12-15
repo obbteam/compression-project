@@ -100,12 +100,12 @@ void Huffman::outputfile(std::ofstream &file) {
 
     // Calculating the size of the dictionary + the number of the size
     // 1 byte for the char, 2 bytes for the size/encoded, 1 byte for the space (+ 2 at the end for the uint16_t for the size)
-    uint16_t size_of_dict = m_encoded.size()*4 + 2;
+    uint16_t size_of_dict = m_encoded.size()*3 + 2;
     file << size_of_dict;
 
 
     for (const auto &i : m_encoded) {
-        file << i.first << i.second << ' ';
+        file << i.first << i.second;
 
     }
 
