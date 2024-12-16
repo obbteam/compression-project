@@ -65,7 +65,7 @@ Node *BinTree::build_tree() {
                     break;
                 }
             }
-            if(!inserted) m_list.insert(m_list.begin(), std::move(node3));
+            if (!inserted) m_list.push_back(std::move(node3));
         }
     }
     return m_list[0].get();
