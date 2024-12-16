@@ -100,13 +100,14 @@ void Huffman::outputfile(std::ofstream &file) {
 
     // Calculating the size of the dictionary + the number of the size
     // 1 byte for the char, 2 bytes for the size/encoded, 1 byte for the space (+ 2 at the end for the uint16_t for the size)
-    uint16_t size_of_dict = m_encoded.size()*3 + 2;
-    file << size_of_dict;
-
+    std::cout << "\nThe amount of elements in the dictionary is " << (m_encoded.size());
+    uint16_t dict_size = m_encoded.size()*3 + 10;
+    uint64_t bits_amount = 0;
+    file.write(reinterpret_cast<char *>(&dict_size), sizeof(dict_size));
+    file.write(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
 
     for (const auto &i : m_encoded) {
         file << i.first << i.second;
-
     }
 
 
@@ -114,28 +115,40 @@ void Huffman::outputfile(std::ofstream &file) {
     m_file.seekg(0, std::ios::beg);
     auto bitBuffer = BitBuffer(file);
 
-    // For each character in the original file, write an encoded version to the compressed file.
-    uint64_t new_size = 0;
+    // For each character in the original file, write an encoded version to the compressed file
     while (m_file.peek() != EOF) {
         uint8_t byte = m_file.get();
 
         // Getting encoded version and its size
         uint16_t encoded_value = m_encoded[byte];
-        int encoded_size = encoded_value & 0xFF;
-        uint8_t encoded_byte = (encoded_value >> 8) & 0xFF;
-        std::cout << '\n' << "For the " << byte << " the size is " << encoded_size << " and the encryption is " << std::bitset<8>(encoded_byte);
+        int encoded_size = (encoded_value >> 8) & 0xFF;
+        uint8_t encoded_byte = encoded_value & 0xFF;
+
+
+        // Testing to see if the value, the byte and the size are correct
+        //std::cout << "\nThe encoded value is " << std::bitset<16>(encoded_value) << ", the size is " << std::bitset<8>(encoded_size) << " and the encoded byte is " << std::bitset<8>(encoded_byte);
+
 
         // Adding encoded version bit by bit into the bitBuffer
         for(int i = encoded_size - 1; i >=0; i--)
         {
             int bit = (encoded_byte >> i) & 0x1;
             bitBuffer.write_bit(bit);
-            new_size++;
+            bits_amount++;
         }
     }
 
     while (bitBuffer.get_size() != 0) bitBuffer.write_bit(0);
-    file << new_size;
+
+    // Skipping the first 2 bytes that are the size of the dictionary, and updating the following 8 bytes
+    // that are the amount of bits in the new message.
+    file.seekp(2);
+    file.write(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
+
+    // Testing to check if 16 bits for the dict and 64 bits for the new size are correct
+    std::cout << "\nThe size of dictionary is " << (dict_size) << " or " << std::bitset<16>(dict_size);
+    std::cout << "\nThe new size is " << (bits_amount) << " or " << std::bitset<64>(bits_amount);
+
     file.close();
 }
 
