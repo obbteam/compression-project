@@ -15,10 +15,8 @@ int main(int argc, char *argv[]) {
         }
 
         std::cout << commandLine << std::endl;
-
         parser.parse(commandLine);
 
-        std::cout << "Utility Name: comp\n";
         for (const auto &file: parser.getInputFiles()) {
             std::ifstream opened_file(file);
             if (opened_file.is_open()) {
@@ -26,26 +24,19 @@ int main(int argc, char *argv[]) {
                     std::cout << "Huffman: " << std::endl;
                     auto object = Huffman(opened_file);
 
-
-                    std::cout << "Dictionary: " << std::endl;
-                    object.print_dict();
-                    std::cout << "Sorted vector: " << std::endl;
-                    object.print_sorted();
-                    std::cout << "File size: " << object.get_size() << " bytes." << std::endl;
-
-                    std::string compFile_name = file.substr(0, file.find_last_of('.')) + ".groza";
-                    std::cout << '\n' << compFile_name << '\n';
-                    std::ofstream compFile(compFile_name);
-
-
-                    if (compFile)
+                    std::string compFile_name = file.substr(0, file.find_last_of('.'));
+                    if(parser.getOperation() == "--compress")
                     {
-                        object.outputfile(compFile);
+                        compFile_name += ".groza";
+                        std::ofstream compFile(compFile_name);
+                        object.compress(compFile);
                         compFile.close();
-                    }
-                    else
+                    } else if (parser.getOperation() == "--decompress")
                     {
-                        std::cout << "Error creating output file " << file << "\n";
+                        compFile_name += ".txt";
+                        std::ofstream compFile(compFile_name);
+                        object.decompress(compFile);
+                        compFile.close();
                     }
 
                 } else if (parser.getCompressionMethod() == "--lzw") {

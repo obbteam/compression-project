@@ -18,25 +18,40 @@
 
 class Huffman {
 public:
+
+    // Constructor/deconstructor
     Huffman(std::ifstream &file);
 
     ~Huffman();
 
+
+
+    // Acsessors and printers
     void print_dict() const;
 
     void print_sorted() const;
 
     void print_encoded() const;
 
-    // create tree
-
-    // create file
-
     int get_size() const;
 
-    void traverse_tree(Node *root_node);
 
-    void outputfile(std::ofstream& file);
+
+    // General functions
+    void compress(std::ofstream& file);
+
+    void decompress(std::ofstream& file);
+
+
+
+    // Helper functions
+    void build_frequency_table();
+
+    void sort_frequency_table();
+
+    void build_huffman_tree();
+
+    void encode_characters(Node *root_node);
 
 private:
     int m_size;
