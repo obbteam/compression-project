@@ -106,6 +106,8 @@ void Huffman::outputfile(std::ofstream &file) {
     file.write(reinterpret_cast<char *>(&dict_size), sizeof(dict_size));
     file.write(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
 
+    // todo check if write fails
+
     for (const auto &i : m_encoded) {
         file << i.first << i.second;
     }
