@@ -75,6 +75,7 @@ Node *BinTree::build_tree() {
 void BinTree::print_tree() {
     auto node = m_root;
     print_root(node);
+    std::cout << std::endl;
 }
 
 void BinTree::print_root(const Node *root) {
