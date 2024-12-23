@@ -18,12 +18,10 @@
 
 class Huffman {
 public:
-
-    // Constructor/deconstructor
-    Huffman(std::ifstream &file);
+    // Constructor/destructor
+    explicit Huffman(std::ifstream &file);
 
     ~Huffman();
-
 
 
     // Acsessors and printers
@@ -36,12 +34,10 @@ public:
     int get_size() const;
 
 
-
     // General functions
-    void compress(std::ofstream& file);
+    void compress(std::ofstream &file);
 
-    void decompress(std::ofstream& file);
-
+    void decompress(std::ofstream &file);
 
 
     // Helper functions
@@ -59,6 +55,7 @@ private:
     std::unordered_map<uint8_t, int> m_dictionary{};
     std::vector<std::pair<uint8_t, int> > m_sorted;
     std::unordered_map<uint8_t, uint16_t> m_encoded{};
+    std::unordered_map<uint16_t, uint8_t> m_decoded{};
 
     void create_code(Node *root_node, uint8_t length, uint8_t code);
 };

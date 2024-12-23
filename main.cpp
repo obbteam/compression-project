@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 
+#include "include/Decode.h"
 #include "include/huffman.h"
 #include "include/Parser.h"
 
@@ -25,20 +26,19 @@ int main(int argc, char *argv[]) {
                     auto object = Huffman(opened_file);
 
                     std::string compFile_name = file.substr(0, file.find_last_of('.'));
-                    if(parser.getOperation() == "--compress")
-                    {
+                    if (parser.getOperation() == "--compress") {
                         compFile_name += ".groza";
                         std::ofstream compFile(compFile_name);
                         object.compress(compFile);
+                        object.print_encoded();
                         compFile.close();
-                    } else if (parser.getOperation() == "--decompress")
-                    {
-                        compFile_name += ".txt";
+                    } else if (parser.getOperation() == "--decompress") {
+                        // todo correct file extension (probably need to store it in a .groza file)
+                        compFile_name += "groza.txt";
                         std::ofstream compFile(compFile_name);
                         object.decompress(compFile);
                         compFile.close();
                     }
-
                 } else if (parser.getCompressionMethod() == "--lzw") {
                     std::cout << "lzw" << std::endl;
                 }

@@ -17,13 +17,6 @@ Huffman::~Huffman() {
 }
 
 
-
-
-
-
-
-
-
 // Compress/decompress functions
 
 void Huffman::compress(std::ofstream &file) {
@@ -40,15 +33,22 @@ void Huffman::compress(std::ofstream &file) {
     // Calculating the size of the dictionary + the number of the size
     // 1 byte for the char, 2 bytes for the size/encoded, 1 byte for the space (+ 2 at the end for the uint16_t for the size)
     std::cout << "\nThe amount of elements in the dictionary is " << (m_encoded.size());
-    uint16_t dict_size = m_encoded.size()*3 + 10;
+    uint16_t dict_size = m_encoded.size() * 3 + 10;
     uint64_t bits_amount = 0;
     file.write(reinterpret_cast<char *>(&dict_size), sizeof(dict_size));
     file.write(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
 
     // todo check if write fails
 
-    for (const auto &i : m_encoded) {
-        file << i.first << i.second;
+    for (const auto &i: m_encoded) {
+        uint8_t symbol = std::move(i.first);
+        uint8_t encoded_size = std::move(i.second) >> 8;
+        uint8_t encoded_code = std::move(i.second);
+
+
+        file.write(reinterpret_cast<char *>(&symbol), sizeof(symbol));
+        file.write(reinterpret_cast<char *>(&encoded_size), sizeof(encoded_size));
+        file.write(reinterpret_cast<char *>(&encoded_code), sizeof(encoded_code));
     }
 
 
@@ -71,8 +71,7 @@ void Huffman::compress(std::ofstream &file) {
 
 
         // Adding encoded version bit by bit into the bitBuffer
-        for(int i = encoded_size - 1; i >=0; i--)
-        {
+        for (int i = encoded_size - 1; i >= 0; i--) {
             int bit = (encoded_byte >> i) & 0x1;
             bitBuffer.write_bit(bit);
             bits_amount++;
@@ -94,36 +93,93 @@ void Huffman::compress(std::ofstream &file) {
 }
 
 
-
 void Huffman::decompress(std::ofstream &file) {
+    // while (m_file.peek() != EOF) {
+    //     std::cout << std::bitset<8>(m_file.get()) << std::endl;
+    // }
+    // m_file.seekg(0, std::ios::beg);
     uint16_t dict_size;
     uint64_t bits_amount;
     m_file.read(reinterpret_cast<char *>(&dict_size), sizeof(dict_size));
     m_file.read(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
 
-    m_encoded.clear();
+    m_decoded.clear();
 
-    for(int i = 0; i < (dict_size - 10)/3; i++) {
-        uint8_t character;
-        uint16_t encoded_value;
 
-        m_file.read(reinterpret_cast<char *>(&character), sizeof(character));
-        m_file.read(reinterpret_cast<char *>(&encoded_value), sizeof(encoded_value));
+    for (int i = 0; i < (dict_size - 10) / 3; ++i) {
+        // every element in a dict is 3 bytes:
+        // 1 byte for a character
+        //  2 bytes for encoded_size and encoded_message
 
-        m_encoded[character] = encoded_value;
+        uint8_t character = m_file.get();
+        uint8_t encoded_size = m_file.get();
+        uint8_t encoded_message = m_file.get();
+        m_decoded[encoded_size << 8 | encoded_message] = character;
     }
 
 
-    print_encoded();
+    // std::cout << "Dictionary entries:\n";
+    // for (auto &p: m_decoded) {
+    //     auto key = p.first; // 16-bit: top 8 bits = size, low 8 bits = code
+    //     auto ch = p.second; // the decoded character
+    //     std::bitset<8> size = key >> 8;
+    //     std::bitset<8> code = key & 0xff;
+    //
+    //     std::cout << " char=" << ch
+    //             << " size=" << size
+    //             << " code=" << code
+    //             << " (hex key=" << std::hex << key << std::dec << ")\n";
+    // }
 
-    // not done, the "encoded" is incorrect
+    m_file.seekg(dict_size, std::ios::beg);
+    std::cout << "Bytes after dict: " << std::endl;
+    int k = 0;
+    while (m_file.peek() != EOF) {
+        ++k;
+        std::cout << std::bitset<8>(m_file.get()) << std::endl;
+    }
+    std::cout << "\nThe amount of elements after the dictionary is " << k << std::endl;
+
+    m_file.seekg(dict_size, std::ios::beg);
+
+
+    if (!file.is_open()) std::cerr << "Error creating output file" << std::endl;
+
+    uint16_t code = 0;
+    int code_size = 0;
+    int bits_read = 0;
+    auto bitBuffer = BitBuffer(m_file);
+    std::cout << "Position after reading dict: " << m_file.tellg() << std::endl;
+
+    std::cout << "Decompressed file: " << std::endl;
+    try {
+        while (bits_read < bits_amount) {
+            auto bit = bitBuffer.read_bit();
+            bits_read++;
+
+            code = (code << 1) | bit;
+            code_size++;
+            uint16_t key = code_size << 8 | code;
+
+            std::cout << "bits_read: " << bits_read
+                    << " bit: " << bit
+                    << " code: " << std::bitset<16>(code)
+                    << " code_size: " << code_size
+                    << " key: " << std::bitset<16>(key) << std::endl;
+
+
+            if (m_decoded.find(key) != m_decoded.end()) {
+                std::cout << "Match: " << m_decoded[key] << std::endl;
+                file.put(m_decoded[key]);
+
+                code_size = 0;
+                code = 0;
+            }
+        }
+    } catch (const std::exception &e) {
+        std::cout << "End of file" << std::endl;
+    }
 }
-
-
-
-
-
-
 
 
 // Helper functions
@@ -152,7 +208,6 @@ void Huffman::build_huffman_tree() {
 }
 
 void Huffman::encode_characters(Node *root_node) {
-
     if (root_node == nullptr) return;
 
     create_code(root_node, 0, 0x00);
@@ -176,14 +231,6 @@ void Huffman::create_code(Node *root_node, uint8_t length, uint8_t code) {
     // shift to the left and create one at the end
     create_code(root_node->right(), length + 1, (code << 1) | 1);
 }
-
-
-
-
-
-
-
-
 
 
 // Printer/size functions
