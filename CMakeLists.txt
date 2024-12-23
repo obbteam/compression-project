@@ -9,6 +9,4 @@ add_executable(compression_project main.cpp
         src/BinTree.cpp
         include/BitBuffer.h
         src/BitBuffer.cpp
-        include/Decode.h
-        src/Decode.cpp
 )

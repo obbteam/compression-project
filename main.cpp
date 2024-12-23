@@ -1,7 +1,6 @@
 #include <fstream>
 #include <iostream>
 
-#include "include/Decode.h"
 #include "include/huffman.h"
 #include "include/Parser.h"
 

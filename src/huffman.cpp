@@ -148,6 +148,7 @@ void Huffman::decompress(std::ofstream &file) {
     uint16_t code = 0;
     int code_size = 0;
     int bits_read = 0;
+    // вот тут вот случается беда с некоторыми
     auto bitBuffer = BitBuffer(m_file);
     std::cout << "Position after reading dict: " << m_file.tellg() << std::endl;
 
