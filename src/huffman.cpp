@@ -6,10 +6,12 @@
 
 // Constructor/deconstructor
 
-Huffman::Huffman(std::ifstream &file): m_file(std::move(file)), m_size{0} {
+Huffman::Huffman(const std::string &file): m_file(file), m_size{0} {
     if (!m_file.is_open()) {
         throw std::runtime_error("Input file stream is not open.");
     }
+    m_filename = file;
+
 }
 
 Huffman::~Huffman() {
@@ -19,10 +21,13 @@ Huffman::~Huffman() {
 
 // Compress/decompress functions
 
-void Huffman::compress(std::ofstream &file) {
+void Huffman::compress() {
     // todo 1 - traverse binary tree to encode a byte
     // todo 2 - encode file in the .groza format
     // todo 3 - decoding using the dictionary in the file
+
+    std::string filename = get_filename() + ".groza";
+    std::ofstream file(filename, std::ios::binary);
 
     build_frequency_table();
     sort_frequency_table();
@@ -33,8 +38,26 @@ void Huffman::compress(std::ofstream &file) {
     // Calculating the size of the dictionary + the number of the size
     // 1 byte for the char, 2 bytes for the size/encoded, 1 byte for the space (+ 2 at the end for the uint16_t for the size)
     std::cout << "\nThe amount of elements in the dictionary is " << (m_encoded.size());
-    uint16_t dict_size = m_encoded.size() * 3 + 10;
+
+
+
+    // Step 1: Calculate the extension size and retrieve the extension
+    uint8_t extension_size = get_extension().size();
+    std::string extension = get_extension();
+
+    file.write(reinterpret_cast<char*>(&extension_size), sizeof(extension_size));
+
+    for (size_t i = 0; i < extension_size; i++) {
+        file.write(&(extension[i]), sizeof(char));
+    }
+
+
+
+    uint16_t dict_size = m_encoded.size() * 3 + 10 + int(extension_size) + 1;
     uint64_t bits_amount = 0;
+
+
+
     file.write(reinterpret_cast<char *>(&dict_size), sizeof(dict_size));
     file.write(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
 
@@ -82,7 +105,7 @@ void Huffman::compress(std::ofstream &file) {
 
     // Skipping the first 2 bytes that are the size of the dictionary, and updating the following 8 bytes
     // that are the amount of bits in the new message.
-    file.seekp(2);
+    file.seekp(3 + int(extension_size));
     file.write(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
 
     // Testing to check if 16 bits for the dict and 64 bits for the new size are correct
@@ -93,11 +116,23 @@ void Huffman::compress(std::ofstream &file) {
 }
 
 
-void Huffman::decompress(std::ofstream &file) {
-    // while (m_file.peek() != EOF) {
-    //     std::cout << std::bitset<8>(m_file.get()) << std::endl;
-    // }
-    // m_file.seekg(0, std::ios::beg);
+void Huffman::decompress() {
+
+// Step 1: Read the extension size
+    uint8_t extension_size;
+    m_file.read(reinterpret_cast<char *>(&extension_size), sizeof(extension_size));
+
+
+    std::string extension;
+    extension.resize(int(extension_size));
+    m_file.read(&extension[0], extension_size);
+
+
+    std::string filename = get_filename() + "groza." + extension;
+    std::cout << "Decompress: Decompressed filename: " << filename << '\n';
+
+    std::ofstream file(filename, std::ios::binary);
+
     uint16_t dict_size;
     uint64_t bits_amount;
     m_file.read(reinterpret_cast<char *>(&dict_size), sizeof(dict_size));
@@ -106,7 +141,7 @@ void Huffman::decompress(std::ofstream &file) {
     m_decoded.clear();
 
 
-    for (int i = 0; i < (dict_size - 10) / 3; ++i) {
+    for (int i = 0; i < (dict_size - 10 - 1 - extension_size) / 3; ++i) {
         // every element in a dict is 3 bytes:
         // 1 byte for a character
         //  2 bytes for encoded_size and encoded_message
@@ -257,4 +292,12 @@ void Huffman::print_sorted() const {
 
 int Huffman::get_size() const {
     return m_size;
+}
+
+std::string Huffman::get_extension() {
+    return m_filename.substr(m_filename.find_last_of('.') + 1);
+}
+
+std::string Huffman::get_filename() {
+    return m_filename.substr(0, m_filename.find_last_of('.'));
 }

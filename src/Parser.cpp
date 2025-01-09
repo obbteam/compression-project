@@ -10,12 +10,11 @@ namespace comp {
             args.push_back(current);
         }
 
-        if (args.size() < 4) {
-            throw std::invalid_argument("Usage: <file1> [file2 ...]/<directory> <compression options> <operation> <file/directory>");
+        if (args.size() < 3) {
+            throw std::invalid_argument("Usage: <file1> [file2 ...]/<directory> <compression options> <file/directory>");
         }
 
         bool methodFound = false;
-        bool operationFound = false;
         bool fileFolderFound = false;
 
         for (size_t i = 0; i < args.size(); ++i) {
@@ -24,19 +23,13 @@ namespace comp {
             if (arg[0] == '-') {
                 for (const auto& [shortOpt, longOpt] : optionMap) {
                     if (arg.find(shortOpt) != std::string::npos) {
-                        if (shortOpt == "-h" || shortOpt == "-l" || shortOpt == "-f") {
+                        if (shortOpt == "-h" || shortOpt == "-l") {
                             if (methodFound) {
                                 throw std::invalid_argument("Multiple compression methods provided. Only one method is allowed.");
                             }
                             compressionMethod = optionMap[shortOpt];
                             methodFound = true;
-                        } else if (shortOpt == "-c" || shortOpt == "-d") {
-                            if (operationFound) {
-                                throw std::invalid_argument("Multiple operations provided. Only one operation is allowed.");
-                            }
-                            operation = optionMap[shortOpt];
-                            operationFound = true;
-                        } else if (shortOpt == "-F" || shortOpt == "-D") {
+                        } else if (shortOpt == "-f" || shortOpt == "-d") {
                             if (fileFolderFound) {
                                 throw std::invalid_argument("The item either needs to be a file or a directory.");
                             }
@@ -56,9 +49,6 @@ namespace comp {
         if (compressionMethod.empty()) {
             throw std::invalid_argument("No compression method specified.");
         }
-        if (operation.empty()) {
-            throw std::invalid_argument("No operation specified (use -c or -d).");
-        }
         if (is_dir.empty()) {
             throw std::invalid_argument("No indication of a file or a directory was provided.");
         }
@@ -76,10 +66,6 @@ namespace comp {
 
     const std::string& Parser::getCompressionMethod() const {
         return compressionMethod;
-    }
-
-    const std::string& Parser::getOperation() const {
-        return operation;
     }
 
     const std::string& Parser::getFileFolder() const {

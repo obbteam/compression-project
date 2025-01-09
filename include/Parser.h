@@ -11,20 +11,15 @@
 namespace comp {
     class Parser {
     private:
-        std::string expectedUtilityName = "comp";
         std::vector<std::string> inputFiles;
         std::string compressionMethod;
-        std::string operation;
         std::string is_dir;
 
         std::unordered_map<std::string, std::string> optionMap = {
             {"-h", "--huffman"},
             {"-l", "--lzw"},
-            {"-f", "--full"},
-            {"-c", "--compress"},
-            {"-d", "--decompress"},
-            {"-F", "--file"},
-            {"-D", "--directory"}
+            {"-f", "--file"},
+            {"-d", "--directory"}
         };
 
     public:
@@ -36,9 +31,6 @@ namespace comp {
 
         // Accessor for compression method
         const std::string &getCompressionMethod() const;
-
-        // Accessor for utility name
-        const std::string &getOperation() const;
 
         // Accessor for is_dir
         const std::string &getFileFolder() const;

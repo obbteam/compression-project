@@ -17,41 +17,24 @@ int main(int argc, char *argv[]) {
         std::cout << commandLine << std::endl;
         parser.parse(commandLine);
 
-        for (const auto &file: parser.getInputFiles()) {
-            std::ifstream opened_file(file);
-            if (opened_file.is_open()) {
-                if (parser.getCompressionMethod() == "--huffman") {
-                    std::cout << "Huffman: " << std::endl;
-                    auto object = Huffman(opened_file);
+        for (const auto &file_name: parser.getInputFiles()) {
+            if (parser.getCompressionMethod() == "--huffman") {
+                std::cout << "Huffman: " << std::endl;
+                auto file = Huffman(file_name);
 
-                    std::string compFile_name = file.substr(0, file.find_last_of('.'));
-                    if (parser.getOperation() == "--compress") {
-                        compFile_name += ".groza";
-                        std::ofstream compFile(compFile_name);
-                        object.compress(compFile);
-                        object.print_encoded();
-                        compFile.close();
-                    } else if (parser.getOperation() == "--decompress") {
-                        // todo correct file extension (probably need to store it in a .groza file)
-                        compFile_name += "groza.txt";
-                        std::ofstream compFile(compFile_name);
-                        object.decompress(compFile);
-                        compFile.close();
-                    }
-                } else if (parser.getCompressionMethod() == "--lzw") {
-                    std::cout << "lzw" << std::endl;
+                if (file.get_extension() == "groza") {
+                    file.decompress();
+                } else {
+                    file.compress();
+                    file.print_encoded();
                 }
-            } else {
-                std::cout << "Error opening file " << file << "\n";
+            } else if (parser.getCompressionMethod() == "--lzw") {
+                std::cout << "lzw" << std::endl;
             }
 
-
-            opened_file.close();
         }
 
         std::cout << "\nCompression Method: " << parser.getCompressionMethod() << "\n";
-
-        std::cout << "Operation: " << parser.getOperation() << "\n";
 
         std::cout << "Item type: " << parser.getFileFolder() << "\n";
     } catch (const std::exception &e) {

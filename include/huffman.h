@@ -19,7 +19,7 @@
 class Huffman {
 public:
     // Constructor/destructor
-    explicit Huffman(std::ifstream &file);
+    explicit Huffman(const std::string &file);
 
     ~Huffman();
 
@@ -33,11 +33,15 @@ public:
 
     int get_size() const;
 
+    std::string get_extension();
+
+    std::string get_filename();
+
 
     // General functions
-    void compress(std::ofstream &file);
+    void compress();
 
-    void decompress(std::ofstream &file);
+    void decompress();
 
 
     // Helper functions
@@ -52,6 +56,7 @@ public:
 private:
     int m_size;
     std::ifstream m_file;
+    std::string m_filename;
     std::unordered_map<uint8_t, int> m_dictionary{};
     std::vector<std::pair<uint8_t, int> > m_sorted;
     std::unordered_map<uint8_t, uint16_t> m_encoded{};
