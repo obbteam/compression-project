@@ -6,7 +6,7 @@
 
 // Constructor/deconstructor
 
-Huffman::Huffman(const std::string &file): m_file(file), m_size{0} {
+Huffman::Huffman(const std::string &file): m_file(file, std::ios::binary), m_size{0} {
     if (!m_file.is_open()) {
         throw std::runtime_error("Input file stream is not open.");
     }
@@ -15,7 +15,7 @@ Huffman::Huffman(const std::string &file): m_file(file), m_size{0} {
 }
 
 Huffman::~Huffman() {
-    m_file.seekg(0, std::ios::beg);
+    m_file.close();
 }
 
 

@@ -1,8 +1,8 @@
-#include <fstream>
 #include <iostream>
 
 #include "include/huffman.h"
 #include "include/Parser.h"
+#include "include/lzw.h"
 
 
 int main(int argc, char *argv[]) {
@@ -30,6 +30,13 @@ int main(int argc, char *argv[]) {
                 }
             } else if (parser.getCompressionMethod() == "--lzw") {
                 std::cout << "lzw" << std::endl;
+                auto file = lzw(file_name);
+
+                if (file.get_extension() == "groza") {
+                    file.decompress();
+                } else {
+                    file.compress();
+                }
             }
 
         }
