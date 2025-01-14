@@ -38,6 +38,15 @@ void lzw::compress() {
 
     if (!m_file) return;
 
+    uint8_t extension_size = get_extension().size();
+    std::string extension = get_extension();
+
+    file.write(reinterpret_cast<char*>(&extension_size), sizeof(extension_size));
+
+    for (size_t i = 0; i < extension_size; i++) {
+        file.write(&(extension[i]), sizeof(char));
+    }
+
     std::string cur, next;
     int code = 256;
     cur = (char)m_file.get();
@@ -61,7 +70,6 @@ void lzw::compress() {
             cur = next;
             next = "";
         }
-        next = "";
     }
 
     // Write the code for the final string
@@ -76,5 +84,47 @@ void lzw::compress() {
 }
 
 void lzw::decompress() {
+
+    uint8_t extension_size;
+    m_file.read(reinterpret_cast<char *>(&extension_size), sizeof(extension_size));
+
+
+    std::string extension;
+    extension.resize(int(extension_size));
+    m_file.read(&extension[0], extension_size);
+
+
+    std::string filename = get_filename() + "groza." + extension;
+    std::ofstream file(filename, std::ios::binary);
+
+    if (!m_file || !file) return;
+
+    int cur_code;
+    m_file.read(reinterpret_cast<char*>(&cur_code), sizeof(cur_code));
+    std::string cur = m_decode[cur_code];
+    file.write(cur.data(), cur.size());
+
+    int code = 256;
+    while (m_file.peek() != EOF) {
+
+        int next_code;
+        m_file.read(reinterpret_cast<char*>(&next_code), sizeof(next_code));
+
+        std::string decoded;
+        if (m_decode.find(next_code) != m_decode.end()) {
+            decoded = m_decode[next_code];
+        } else {
+            decoded = m_decode[cur_code] + m_decode[cur_code][0];
+        }
+
+
+        file.write(decoded.data(), decoded.size());
+
+        m_decode[code++] = cur + decoded[0];
+        cur = decoded;
+        cur_code = next_code;
+    }
+
+    file.close();
 
 }
