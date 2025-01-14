@@ -36,30 +36,43 @@ void lzw::compress() {
     std::string filename = get_filename() + ".groza";
     std::ofstream file(filename, std::ios::binary);
 
-    if (m_file.eof()) return;
+    if (!m_file) return;
 
     std::string cur, next;
-    uint16_t code = 256;
-    cur = (char) m_file.get();
+    int code = 256;
+    cur = (char)m_file.get();
+    std::cout << "String\tOutput_Code\tAddition\n";
 
-    while (!m_file.eof())
+    // While the file is not empty, keep encoding the values
+    while (m_file.peek() != EOF)
     {
-        if(m_file.peek() != EOF) {
-            next = m_file.get();
-        }
+        next = (char)m_file.get();
 
         if (m_encode.find(cur + next) != m_encode.end()) {
             cur += next;
         } else {
-            file.write(reinterpret_cast<char*>(&cur), cur.size());
+
+            int output_code = m_encode[cur];
+            file.write(reinterpret_cast<const char *>(&output_code), sizeof(output_code));
+
+            std::cout << cur << "\t" << m_encode[cur] << "\t\t"
+                      << cur + next << "\t" << code << std::endl;
             m_encode[cur + next] = code++;
             cur = next;
+            next = "";
         }
         next = "";
     }
 
-    file.write(reinterpret_cast<char*>(&cur), cur.size());
+    // Write the code for the final string
+    if (!cur.empty()) {
+        int output_code = m_encode[cur];
+        file.write(reinterpret_cast<const char*>(&output_code), sizeof(output_code));
+        std::cout << cur << "\t" << output_code << std::endl;
+    }
 
+
+    file.close();
 }
 
 void lzw::decompress() {
