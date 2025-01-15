@@ -9,12 +9,6 @@ lzw::lzw(const std::string &file): m_file(file, std::ios::binary) {
     }
     m_filename = file;
 
-    for (uint16_t i = 0; i < 256; i++) {
-        std::string temp;
-        temp += static_cast<char>(i);
-        m_encoded[temp] = i;
-        m_decoded[i] = temp;
-    }
 }
 
 lzw::~lzw() {
@@ -42,11 +36,10 @@ void lzw::compress() {
     std::string extension = get_extension();
 
     file.write(reinterpret_cast<char *>(&extension_size), sizeof(extension_size));
+    file.write(extension.data(), extension_size);
 
-    for (size_t i = 0; i < extension_size; i++) {
-        file.write(&(extension[i]), sizeof(char));
-    }
 
+    fill_encoded();
     std::string cur, next;
     uint16_t dict_size = 256;
     cur = static_cast<char>(m_file.get());
@@ -65,8 +58,18 @@ void lzw::compress() {
             std::cout << cur << "\t" << m_encoded[cur] << "\t\t"
                     << cur + next << "\t" << dict_size << std::endl;
             m_encoded[cur + next] = dict_size++;
+
             cur = next;
             next = "";
+        }
+
+        if (dict_size == 65535) {
+            uint16_t reset_marker = 65535; // Special marker
+            file.write(reinterpret_cast<const char *>(&reset_marker), sizeof(reset_marker));
+
+            m_encoded.clear();
+            fill_encoded();
+            dict_size = 256;
         }
     }
 
@@ -100,6 +103,7 @@ void lzw::decompress() {
     }
 
     // todo rename the variables
+    fill_decoded();
     uint16_t cur_code;
     m_file.read(reinterpret_cast<char *>(&cur_code), sizeof(cur_code));
     std::string cur = m_decoded[cur_code];
@@ -109,6 +113,13 @@ void lzw::decompress() {
     while (m_file.peek() != EOF) {
         uint16_t next_code;
         m_file.read(reinterpret_cast<char *>(&next_code), sizeof(next_code));
+
+        if (next_code == 65535) {
+            m_decoded.clear();
+            fill_decoded();
+            dict_size = 256;
+            continue;
+        }
 
         std::string decoded;
         if (m_decoded.contains(next_code)) {
@@ -123,7 +134,31 @@ void lzw::decompress() {
         m_decoded[dict_size++] = cur + decoded[0];
         cur = decoded;
         cur_code = next_code;
+
+        /*if (dict_size == 4096) {
+            m_decoded.clear();
+            fill_decoded();
+            dict_size = 256;
+        }*/
     }
 
     file.close();
+}
+
+void lzw::fill_encoded() {
+    m_encoded.clear();
+    for (uint16_t i = 0; i < 256; ++i) {
+        std::string temp;
+        temp += static_cast<char>(i);
+        m_encoded[temp] = i;
+    }
+}
+
+void lzw::fill_decoded() {
+    m_decoded.clear();
+    for (uint16_t i = 0; i < 256; ++i) {
+        std::string temp;
+        temp += static_cast<char>(i);
+        m_decoded[i] = temp;
+    }
 }

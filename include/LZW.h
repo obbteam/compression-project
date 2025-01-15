@@ -33,6 +33,9 @@ private:
     std::string m_filename;
     std::unordered_map<std::string, uint16_t> m_encoded;
     std::unordered_map<uint16_t, std::string> m_decoded;
+
+    void fill_encoded();
+    void fill_decoded();
 };
 
 
