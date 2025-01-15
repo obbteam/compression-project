@@ -1,7 +1,7 @@
 //
 // Created by obbte on 03.12.2024.
 //
-#include "../include/huffman.h"
+#include "../include/Huffman.h"
 
 
 // Constructor/deconstructor
@@ -11,7 +11,6 @@ Huffman::Huffman(const std::string &file): m_file(file, std::ios::binary), m_siz
         throw std::runtime_error("Input file stream is not open.");
     }
     m_filename = file;
-
 }
 
 Huffman::~Huffman() {
@@ -20,11 +19,10 @@ Huffman::~Huffman() {
 
 
 // Compress/decompress functions
-
 void Huffman::compress() {
-    // todo 1 - traverse binary tree to encode a byte
-    // todo 2 - encode file in the .groza format
-    // todo 3 - decoding using the dictionary in the file
+    // 1 - traverse binary tree to encode a byte
+    // 2 - encode file in the .groza format
+    // 3 - decoding using the dictionary in the file
 
     std::string filename = get_filename() + ".groza";
     std::ofstream file(filename, std::ios::binary);
@@ -40,28 +38,23 @@ void Huffman::compress() {
     std::cout << "\nThe amount of elements in the dictionary is " << (m_encoded.size());
 
 
-
     // Step 1: Calculate the extension size and retrieve the extension
     uint8_t extension_size = get_extension().size();
     std::string extension = get_extension();
 
-    file.write(reinterpret_cast<char*>(&extension_size), sizeof(extension_size));
+    file.write(reinterpret_cast<char *>(&extension_size), sizeof(extension_size));
 
     for (size_t i = 0; i < extension_size; i++) {
         file.write(&(extension[i]), sizeof(char));
     }
 
 
-
     uint16_t dict_size = m_encoded.size() * 3 + 10 + int(extension_size) + 1;
     uint64_t bits_amount = 0;
 
 
-
     file.write(reinterpret_cast<char *>(&dict_size), sizeof(dict_size));
     file.write(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
-
-    // todo check if write fails
 
     for (const auto &i: m_encoded) {
         uint8_t symbol = std::move(i.first);
@@ -89,10 +82,6 @@ void Huffman::compress() {
         uint8_t encoded_byte = encoded_value & 0xFF;
 
 
-        // Testing to see if the value, the byte and the size are correct
-        //std::cout << "\nThe encoded value is " << std::bitset<16>(encoded_value) << ", the size is " << std::bitset<8>(encoded_size) << " and the encoded byte is " << std::bitset<8>(encoded_byte);
-
-
         // Adding encoded version bit by bit into the bitBuffer
         for (int i = encoded_size - 1; i >= 0; i--) {
             int bit = (encoded_byte >> i) & 0x1;
@@ -117,8 +106,7 @@ void Huffman::compress() {
 
 
 void Huffman::decompress() {
-
-// Step 1: Read the extension size
+    // Step 1: Read the extension size
     uint8_t extension_size;
     m_file.read(reinterpret_cast<char *>(&extension_size), sizeof(extension_size));
 
@@ -219,10 +207,9 @@ void Huffman::decompress() {
 
 
 // Helper functions
-
 void Huffman::build_frequency_table() {
     while (m_file.peek() != EOF) {
-        uint8_t byte = m_file.get();
+        const auto byte = m_file.get();
         ++m_size;
         m_dictionary[byte]++;
     }

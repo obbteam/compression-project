@@ -31,8 +31,8 @@ public:
 private:
     std::ifstream m_file;
     std::string m_filename;
-    std::unordered_map<std::string, int> m_encode;
-    std::unordered_map<int, std::string> m_decode;
+    std::unordered_map<std::string, uint16_t> m_encoded;
+    std::unordered_map<uint16_t, std::string> m_decoded;
 };
 
 

@@ -9,5 +9,5 @@ add_executable(compression_project
         src/huffman.cpp
         src/BinTree.cpp
         src/BitBuffer.cpp
-        src/lzw.cpp
+        src/LZW.cpp
 )

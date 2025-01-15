@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "include/huffman.h"
+#include "include/Huffman.h"
 #include "include/Parser.h"
-#include "include/lzw.h"
+#include "include/LZW.h"
 
 
 int main(int argc, char *argv[]) {
@@ -50,12 +50,12 @@ int main(int argc, char *argv[]) {
     }
 
 
-    std::ifstream file("test.groza", std::ios::binary);
-    int value;
-    while (file.read(reinterpret_cast<char*>(&value), sizeof(value))) {
-        std::cout << "Output Code: " << value << std::endl;
-    }
-    file.close();
+    // std::ifstream file("test.groza", std::ios::binary);
+    // int value;
+    // while (file.read(reinterpret_cast<char*>(&value), sizeof(value))) {
+    //     std::cout << "Output Code: " << value << std::endl;
+    // }
+    // file.close();
 
     return 0;
 }
