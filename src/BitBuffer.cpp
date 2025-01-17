@@ -43,7 +43,7 @@ int BitBuffer::read_bit() {
         // If all bits in the buffer have been read, load the next byte
         buffer = is->get();
         if (is->eof()) {
-            throw std::runtime_error("End of file reached while reading bits.");
+            return -1;
         }
         count = 0;
     }

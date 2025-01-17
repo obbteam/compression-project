@@ -10,9 +10,10 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include "BitBuffer.h"
 
-class lzw{
 
+class lzw {
 public:
     explicit lzw(const std::string &file);
 
@@ -31,13 +32,15 @@ public:
 private:
     std::ifstream m_file;
     std::string m_filename;
-    std::unordered_map<std::string, uint16_t> m_encoded;
-    std::unordered_map<uint16_t, std::string> m_decoded;
+    std::unordered_map<std::string, int> m_encoded;
+    std::unordered_map<int, std::string> m_decoded;
+    int MAX_DICT_SIZE = 4096;
+
 
     void fill_encoded();
+
     void fill_decoded();
 };
 
 
 #endif //COMPRESSION_PROJECT_LZW_H
-
