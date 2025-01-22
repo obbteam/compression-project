@@ -57,9 +57,9 @@ void Huffman::compress() {
     file.write(reinterpret_cast<char *>(&bits_amount), sizeof(bits_amount));
 
     for (const auto &i: m_encoded) {
-        uint8_t symbol = std::move(i.first);
-        uint8_t encoded_size = std::move(i.second) >> 8;
-        uint8_t encoded_code = std::move(i.second);
+        uint8_t symbol = i.first;
+        uint8_t encoded_size = i.second >> 8;
+        uint8_t encoded_code = i.second;
 
 
         file.write(reinterpret_cast<char *>(&symbol), sizeof(symbol));
@@ -78,7 +78,7 @@ void Huffman::compress() {
 
         // Getting encoded version and its size
         uint16_t encoded_value = m_encoded[byte];
-        int encoded_size = (encoded_value >> 8) & 0xFF;
+        uint8_t encoded_size = (encoded_value >> 8) & 0xFF;
         uint8_t encoded_byte = encoded_value & 0xFF;
 
 

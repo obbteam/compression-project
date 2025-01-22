@@ -7,8 +7,8 @@
 
 
 void tester() {
-    std::ofstream file("files/tester.bin", std::ios::binary);
-    for (int i = 1; i <= 100; i++) {
+    std::ofstream file("files/test.bin", std::ios::binary);
+    for (int i = 1; i <= 1000; i++) {
         file.write(reinterpret_cast<char*>(&i), sizeof(i));
     }
     file.close();
@@ -31,6 +31,7 @@ void test_bit_buffer() {
 
 
 int main(int argc, char *argv[]) {
+    tester();
     comp::Parser parser;
     try {
         std::string commandLine;
@@ -51,7 +52,6 @@ int main(int argc, char *argv[]) {
                     file.decompress();
                 } else {
                     file.compress();
-                    file.print_encoded();
                 }
             } else if (parser.getCompressionMethod() == "--lzw") {
                 std::cout << "lzw" << std::endl;
