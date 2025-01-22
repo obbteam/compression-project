@@ -5,6 +5,31 @@
 #include "include/LZW.h"
 
 
+
+void tester() {
+    std::ofstream file("files/tester.bin", std::ios::binary);
+    for (int i = 1; i <= 100; i++) {
+        file.write(reinterpret_cast<char*>(&i), sizeof(i));
+    }
+    file.close();
+}
+
+void test_bit_buffer() {
+    std::ifstream file("files/1.png", std::ios::binary);
+    auto reader = BitBuffer(file);
+    std::ofstream out("files/1.copy.png", std::ios::binary);
+    auto writer = BitBuffer(out);
+    while (!reader.eof()) {
+        int bit = reader.read_bit();
+        writer.write_bit(bit);
+    }
+    writer.flush();
+}
+
+
+
+
+
 int main(int argc, char *argv[]) {
     comp::Parser parser;
     try {
@@ -59,3 +84,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
