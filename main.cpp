@@ -52,6 +52,7 @@ int main(int argc, char *argv[]) {
                     file.decompress();
                 } else {
                     file.compress();
+                    file.print_dict();
                 }
             } else if (parser.getCompressionMethod() == "--lzw") {
                 std::cout << "lzw" << std::endl;

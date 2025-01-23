@@ -116,7 +116,7 @@ void Huffman::decompress() {
     m_file.read(&extension[0], extension_size);
 
 
-    std::string filename = get_filename() + "groza." + extension;
+    std::string filename = get_filename() + ".groza." + extension;
     std::cout << "Decompress: Decompressed filename: " << filename << '\n';
 
     std::ofstream file(filename, std::ios::binary);
@@ -134,28 +134,31 @@ void Huffman::decompress() {
         // 1 byte for a character
         //  2 bytes for encoded_size and encoded_message
 
-        uint8_t character = m_file.get();
-        uint8_t encoded_size = m_file.get();
-        uint8_t encoded_message = m_file.get();
+        uint8_t character, encoded_size, encoded_message;
+        m_file.read(reinterpret_cast<char *>(&character), sizeof(character));
+        m_file.read(reinterpret_cast<char *>(&encoded_size), sizeof(encoded_size));
+        m_file.read(reinterpret_cast<char *>(&encoded_message), sizeof(encoded_message));
         m_decoded[encoded_size << 8 | encoded_message] = character;
     }
 
+/*
+    std::cout << "Dictionary entries:\n";
+    for (auto &p: m_decoded) {
+        auto key = p.first; // 16-bit: top 8 bits = size, low 8 bits = code
+        auto ch = p.second; // the decoded character
+        std::bitset<8> size = key >> 8;
+        std::bitset<8> code = key & 0xff;
 
-    // std::cout << "Dictionary entries:\n";
-    // for (auto &p: m_decoded) {
-    //     auto key = p.first; // 16-bit: top 8 bits = size, low 8 bits = code
-    //     auto ch = p.second; // the decoded character
-    //     std::bitset<8> size = key >> 8;
-    //     std::bitset<8> code = key & 0xff;
-    //
-    //     std::cout << " char=" << ch
-    //             << " size=" << size
-    //             << " code=" << code
-    //             << " (hex key=" << std::hex << key << std::dec << ")\n";
-    // }
+        std::cout << " char=" << ch
+                << " size=" << size
+                << " code=" << code
+                << " (hex key=" << std::hex << key << std::dec << ")\n";
+    }
 
     m_file.seekg(dict_size, std::ios::beg);
     std::cout << "Bytes after dict: " << std::endl;
+
+
     int k = 0;
     while (m_file.peek() != EOF) {
         ++k;
@@ -163,14 +166,16 @@ void Huffman::decompress() {
     }
     std::cout << "\nThe amount of elements after the dictionary is " << k << std::endl;
 
+    */
+
     m_file.seekg(dict_size, std::ios::beg);
 
 
     if (!file.is_open()) std::cerr << "Error creating output file" << std::endl;
 
-    uint16_t code = 0;
-    int code_size = 0;
-    int bits_read = 0;
+    uint8_t code = 0;
+    uint8_t code_size = 0;
+    uint64_t bits_read = 0;
     // вот тут вот случается беда с некоторыми
     auto bitBuffer = BitBuffer(m_file);
     std::cout << "Position after reading dict: " << m_file.tellg() << std::endl;
@@ -185,16 +190,17 @@ void Huffman::decompress() {
             code_size++;
             uint16_t key = code_size << 8 | code;
 
+            /*
             std::cout << "bits_read: " << bits_read
                     << " bit: " << bit
                     << " code: " << std::bitset<16>(code)
                     << " code_size: " << code_size
                     << " key: " << std::bitset<16>(key) << std::endl;
-
+            */
 
             if (m_decoded.find(key) != m_decoded.end()) {
                 std::cout << "Match: " << m_decoded[key] << std::endl;
-                file.put(m_decoded[key]);
+                file.write(reinterpret_cast<char *>(&m_decoded[key]), sizeof(m_decoded[key]));
 
                 code_size = 0;
                 code = 0;
@@ -209,7 +215,8 @@ void Huffman::decompress() {
 // Helper functions
 void Huffman::build_frequency_table() {
     while (m_file.peek() != EOF) {
-        const auto byte = m_file.get();
+        uint8_t byte;
+        m_file.read(reinterpret_cast<char *>(&byte), sizeof(byte));
         ++m_size;
         m_dictionary[byte]++;
     }
@@ -258,6 +265,7 @@ void Huffman::create_code(Node *root_node, uint8_t length, uint8_t code) {
 
 // Printer/size functions
 void Huffman::print_dict() const {
+    std::cout << "\nDict: " << std::endl;
     for (auto &it: m_dictionary) {
         std::cout << it.first << ": " << it.second << std::endl;
     }
