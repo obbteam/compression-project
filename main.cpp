@@ -5,11 +5,10 @@
 #include "include/LZW.h"
 
 
-
 void tester() {
     std::ofstream file("files/test.bin", std::ios::binary);
     for (int i = 1; i <= 1000; i++) {
-        file.write(reinterpret_cast<char*>(&i), sizeof(i));
+        file.write(reinterpret_cast<char *>(&i), sizeof(i));
     }
     file.close();
 }
@@ -25,9 +24,6 @@ void test_bit_buffer() {
     }
     writer.flush();
 }
-
-
-
 
 
 int main(int argc, char *argv[]) {
@@ -52,7 +48,11 @@ int main(int argc, char *argv[]) {
                     file.decompress();
                 } else {
                     file.compress();
-                    file.print_dict();
+                    // file.build_frequency_table();
+                    // file.sort_frequency_table();
+                    // file.build_huffman_tree();
+                    // file.print_dict();
+                    file.print_encoded();
                 }
             } else if (parser.getCompressionMethod() == "--lzw") {
                 std::cout << "lzw" << std::endl;
@@ -64,7 +64,6 @@ int main(int argc, char *argv[]) {
                     file.compress();
                 }
             }
-
         }
 
         std::cout << "\nCompression Method: " << parser.getCompressionMethod() << "\n";
@@ -85,4 +84,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-

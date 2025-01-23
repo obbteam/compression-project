@@ -7,6 +7,7 @@
 #include <fstream>
 #include <unordered_map>
 #include <vector>
+#include <string>
 #include <bitset>
 #include <iostream>
 #include <algorithm>
@@ -33,9 +34,9 @@ public:
 
     int get_size() const;
 
-    std::string get_extension();
+    std::string get_extension() const;
 
-    std::string get_filename();
+    std::string get_filename() const;
 
 
     // General functions
@@ -59,8 +60,12 @@ private:
     std::string m_filename;
     std::unordered_map<uint8_t, int> m_dictionary{};
     std::vector<std::pair<uint8_t, int> > m_sorted;
-    std::unordered_map<uint8_t, uint16_t> m_encoded{};
-    std::unordered_map<uint16_t, uint8_t> m_decoded{};
+    std::unordered_map<uint8_t, std::string> m_encoded{};
+    std::unordered_map<std::string, uint8_t> m_decoded{};
+    uint16_t m_prep_size = 0;
+    uint8_t m_dict_amount = 0;
+    uint64_t m_bits_amount = 0;
 
-    void create_code(Node *root_node, uint8_t length, uint8_t code);
+
+    void create_code(Node *root_node, uint8_t length, std::string &&code);
 };
