@@ -50,22 +50,22 @@ BinTree::BinTree(const std::vector<std::pair<uint8_t, int> > &list) : m_root(nul
 // todo use heap to reach O(n*log n)
 Node *BinTree::build_tree() {
     while (m_list.size() > 1) {
-        auto node3 = std::make_unique<Node>(m_list[0]->get_freq() + m_list[1]->get_freq(), std::move(m_list[0]),
+        auto node = std::make_unique<Node>(m_list[0]->get_freq() + m_list[1]->get_freq(), std::move(m_list[0]),
                                             std::move(m_list[1]));
         m_list.erase(m_list.begin(), m_list.begin() + 2);
 
         if (m_list.empty()) {
-            m_list.insert(m_list.begin(), std::move(node3));
+            m_list.insert(m_list.begin(), std::move(node));
         } else {
             bool inserted = false;
             for (int i = 0; i < m_list.size(); i++) {
-                if (m_list[i]->get_freq() > node3->get_freq()) {
-                    m_list.insert(m_list.begin() + i, std::move(node3));
+                if (m_list[i]->get_freq() > node->get_freq()) {
+                    m_list.insert(m_list.begin() + i, std::move(node));
                     inserted = true;
                     break;
                 }
             }
-            if (!inserted) m_list.push_back(std::move(node3));
+            if (!inserted) m_list.push_back(std::move(node));
         }
     }
     return m_list[0].get();

@@ -19,6 +19,7 @@ public:
     explicit BitBuffer(std::ostream &ostream);
     explicit BitBuffer(std::istream &istream);
     void flush();
+    void clear();
     int get_size() const;
     void write_bit(int i);
 

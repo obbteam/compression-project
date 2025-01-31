@@ -1,8 +1,10 @@
 import os
 
 # File paths
-file_bin_path = 'files/test.bin'
-file_groza_bin_path = 'files/test.groza.bin'
+file_bin_path = 'files/numbers.bin'
+file_groza_bin_path = 'files/numbers.groza.bin'
+
+
 
 # Check if files exist
 if not os.path.exists(file_bin_path) or not os.path.exists(file_groza_bin_path):

@@ -6,8 +6,8 @@
 
 
 void tester() {
-    std::ofstream file("files/test.bin", std::ios::binary);
-    for (int i = 1; i <= 1000; i++) {
+    std::ofstream file("numbers.bin", std::ios::binary);
+    for (int i = 1; i <= 20000000; i++) {
         file.write(reinterpret_cast<char *>(&i), sizeof(i));
     }
     file.close();
@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
                 auto file = Huffman(file_name);
 
                 if (file.get_extension() == "groza") {
+                    // file.print_file();
                     file.decompress();
                 } else {
                     file.compress();

@@ -52,6 +52,7 @@ public:
 
     void build_huffman_tree();
 
+    void print_file();
     void encode_characters(Node *root_node);
 
 private:

@@ -18,6 +18,10 @@ void BitBuffer::flush() {
     buffer = count = 0;
 }
 
+void BitBuffer::clear() {
+    buffer = count = 0;
+}
+
 void BitBuffer::write_bit(int i) {
     if (i != 0 && i != 1) {
         throw std::invalid_argument("Only 0 or 1 can be written as bits.");
