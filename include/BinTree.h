@@ -11,19 +11,19 @@
 
 class Node {
 public:
+    // Constructors
     explicit Node(const uint8_t &data, int freq);
-
     Node(int freq, std::unique_ptr<Node> left, std::unique_ptr<Node> right);
 
-    int get_freq() const;
-
-    uint8_t* get_data();
-
-    Node *left() const;
-
-    Node *right() const;
-
+    // Destructor
     ~Node() = default;
+
+
+    // Get functions
+    int get_freq() const;
+    uint8_t* get_data();
+    Node *left() const;
+    Node *right() const;
 
 private:
     std::unique_ptr<Node> m_left;
@@ -36,16 +36,16 @@ private:
 
 class BinTree {
 public:
+    // Constructor/desctructor
     explicit BinTree(const std::vector<std::pair<uint8_t, int> > &list);
-
     ~BinTree() = default;
 
+    // Main function
     Node *build_tree();
 
+    // Print/get functions
     void print_tree();
-
     void print_root(const Node *root);
-
     Node *get_root() const;
 
 private:

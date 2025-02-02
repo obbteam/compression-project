@@ -9,7 +9,7 @@
 #include "vector"
 #include "map"
 #include "string"
-#include "BinTree.h"
+#include "../BinTree.h"
 #include "iostream"
 
 class HuffmanDictionary {
@@ -44,7 +44,7 @@ private:
     std::unordered_map<uint8_t, int> m_dictionary{};
     std::vector<std::pair<uint8_t, int> > m_sorted;
     std::unordered_map<uint8_t, std::string> m_encoded{};
-    std::ifstream& m_file;
+    std::ifstream& in_file;
 
     void create_code(Node *root_node, uint8_t length, std::string &&code);
 };

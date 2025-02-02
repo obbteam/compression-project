@@ -10,18 +10,6 @@
 
 namespace comp {
     class Parser {
-    private:
-        std::vector<std::string> inputFiles;
-        std::string compressionMethod;
-        std::string is_dir;
-
-        std::unordered_map<std::string, std::string> optionMap = {
-            {"-h", "--huffman"},
-            {"-l", "--lzw"},
-            {"-f", "--file"},
-            {"-d", "--directory"}
-        };
-
     public:
         // Parses the command line arguments
         void parse(const std::string &commandLine);
@@ -34,6 +22,19 @@ namespace comp {
 
         // Accessor for is_dir
         const std::string &getFileFolder() const;
+
+
+    private:
+        std::vector<std::string> inputFiles;
+        std::string compressionMethod;
+        std::string is_dir;
+
+        std::unordered_map<std::string, std::string> optionMap = {
+                {"-h", "--huffman"},
+                {"-l", "--lzw"},
+                {"-f", "--file"},
+                {"-d", "--directory"}
+        };
     };
 }
 #endif //COMPRESSION_PROJECT_PARSER_H

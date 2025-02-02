@@ -1,7 +1,9 @@
 #include "../include/BitBuffer.h"
 
 #include <iostream>
-// todo check if its okay to put the buffer to 0 here
+
+
+// Constructors
 BitBuffer::BitBuffer(std::ostream &ostream) : os(&ostream) {
     buffer = count = 0;
 }
@@ -12,6 +14,9 @@ BitBuffer::BitBuffer(std::istream &istream) : is(&istream), count{0} {
     buffer = is->get();
 }
 
+
+
+// Helper functions
 void BitBuffer::flush() {
     os->put(buffer);
     os->flush();
@@ -22,20 +27,10 @@ void BitBuffer::clear() {
     buffer = count = 0;
 }
 
-void BitBuffer::write_bit(int i) {
-    if (i != 0 && i != 1) {
-        throw std::invalid_argument("Only 0 or 1 can be written as bits.");
-    }
-
-    buffer = (buffer << 1) | (i & 1);
-    count++;
-
-    if (count == 8) flush();
+bool BitBuffer::eof() const {
+    return is && is->eof() && count == 8;
 }
 
-int BitBuffer::get_size() const {
-    return count;
-}
 
 
 int BitBuffer::read_bit() {
@@ -58,6 +53,18 @@ int BitBuffer::read_bit() {
 }
 
 
-bool BitBuffer::eof() const {
-    return is && is->eof() && count == 8;
+void BitBuffer::write_bit(int i) {
+    if (i != 0 && i != 1) {
+        throw std::invalid_argument("Only 0 or 1 can be written as bits.");
+    }
+
+    buffer = (buffer << 1) | (i & 1);
+    count++;
+
+    if (count == 8) flush();
+}
+
+
+int BitBuffer::get_size() const {
+    return count;
 }

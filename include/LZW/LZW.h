@@ -6,40 +6,30 @@
 #define COMPRESSION_PROJECT_LZW_H
 
 #include <iostream>
-#include <fstream>
-#include <unordered_map>
-#include <string>
-#include <vector>
-#include "BitBuffer.h"
+#include "LZW_compress.h"
+#include "LZW_decompress.h"
 
 
 class lzw {
 public:
+    // Constructor/destructor
     explicit lzw(const std::string &file);
-
     ~lzw();
 
+    // Get functions
     std::string get_extension();
-
     std::string get_filename();
-
 
     // General functions
     void compress();
-
     void decompress();
 
+
 private:
-    std::ifstream m_file;
     std::string m_filename;
-    std::unordered_map<std::string, int> m_encoded;
-    std::unordered_map<int, std::string> m_decoded;
-    int MAX_DICT_SIZE = 4096;
+    std::ifstream m_file;
 
-
-    void fill_encoded();
-
-    void fill_decoded();
+    static void validate_files(std::ifstream& inFile, std::ofstream& outFile);
 };
 
 

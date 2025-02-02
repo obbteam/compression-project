@@ -1,48 +1,50 @@
 
-#include "../include/Huffman.h"
+#include "../../include/Huffman/Huffman.h"
 
 
-// Constructor/deconstructor
-Huffman::Huffman(const std::string &file): m_file(file, std::ios::binary), m_huffman_properties(file) {
-    if (!m_file.is_open()) {
+// Constructor/destructor
+Huffman::Huffman(const std::string &file): in_file(file, std::ios::binary), m_huffman_properties(file) {
+    if (!in_file.is_open()) {
         throw std::runtime_error("Input file stream is not open.");
     }
 
 }
 
 Huffman::~Huffman() {
-    m_file.close();
+    in_file.close();
 }
+
+
 
 
 // Compress function
 void Huffman::compress() {
 
-    std::ofstream file(m_huffman_properties.get_filename() + ".groza", std::ios::binary);
+    std::ofstream out_file(m_huffman_properties.get_filename() + ".groza", std::ios::binary);
 
     m_huffman_dict.create_encoded_dictionary();
 
-    m_file.seekg(0, std::ios::beg);
+    in_file.seekg(0, std::ios::beg);
 
-    BitBuffer bb(file);
+    BitBuffer bb(out_file);
 
-    auto huffmanCompress = HuffmanCompress(m_file, file, bb, m_huffman_dict, m_huffman_properties);
+    auto huffmanCompress = HuffmanCompress(in_file, out_file, bb, m_huffman_dict, m_huffman_properties);
     huffmanCompress.compress_file();
 
     std::cout << "The prep size is " << huffmanCompress.getPrepSize() << std::endl;
     std::cout << "Bits amount in a new message is " << huffmanCompress.getBitsAmount() << std::endl;
     std::cout << "The amount of elements in the dictionary is " << int(huffmanCompress.getDictAmount() + 1) << std::endl;
 
-    file.close();
+    out_file.close();
 
 }
 
 
 // Decompress function
 void Huffman::decompress() {
-    m_file.seekg(0, std::ios::beg);
+    in_file.seekg(0, std::ios::beg);
 
-    auto huffmanDecompress = HuffmanDecompress(m_file);
+    auto huffmanDecompress = HuffmanDecompress(in_file);
     huffmanDecompress.read_header();
     std::string filename = m_huffman_properties.get_filename() + ".groza." + huffmanDecompress.getExtension();
     std::ofstream out_file(filename, std::ios::binary);
@@ -60,8 +62,8 @@ void Huffman::decompress() {
 // Print function
 void Huffman::print_file() {
     int count = 0;
-    while (m_file.peek() != EOF) {
-        uint8_t byte = m_file.get();
+    while (in_file.peek() != EOF) {
+        uint8_t byte = in_file.get();
         std::cout << std::bitset<8>(byte);
 
         count += 8;

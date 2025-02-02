@@ -1,6 +1,8 @@
 #include "../include/Parser.h"
 
 namespace comp {
+
+    // Function that takes a string and parses it
     void Parser::parse(const std::string& commandLine) {
         std::istringstream stream(commandLine);
         std::string current;
@@ -60,6 +62,7 @@ namespace comp {
 
 
 
+    // Get functions
     const std::vector<std::string>& Parser::getInputFiles() const {
         return inputFiles;
     }

@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "include/Huffman.h"
+#include "include/Huffman/Huffman.h"
 #include "include/Parser.h"
-#include "include/LZW.h"
+#include "include/LZW/LZW.h"
 
 
 void tester() {

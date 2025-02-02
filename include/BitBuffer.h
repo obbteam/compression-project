@@ -9,22 +9,26 @@
 #include <istream>
 
 class BitBuffer {
+public:
+    // Constructors
+    explicit BitBuffer(std::ostream &ostream);
+    explicit BitBuffer(std::istream &istream);
+
+    // Main functions
+    void flush();
+    void clear();
+    bool eof() const;
+    int read_bit();
+    void write_bit(int i);
+    int get_size() const;
+
+
 private:
     char buffer;
     int count;
     std::ostream* os = nullptr;
+
     std::istream* is = nullptr;
-
-public:
-    explicit BitBuffer(std::ostream &ostream);
-    explicit BitBuffer(std::istream &istream);
-    void flush();
-    void clear();
-    int get_size() const;
-    void write_bit(int i);
-
-    int read_bit();
-    bool eof() const;
 };
 
 #endif //COMPRESSION_PROJECT_BITBUFFER_H

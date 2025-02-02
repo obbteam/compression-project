@@ -6,7 +6,7 @@
 #define COMPRESSION_PROJECT_HUFFMANCOMPRESS_H
 
 #include "fstream"
-#include "BitBuffer.h"
+#include "../BitBuffer.h"
 #include "string"
 #include "HuffmanDictionary.h"
 #include "HuffmanProperties.h"
@@ -15,7 +15,7 @@ class HuffmanCompress {
 
 public:
     // Constructor
-    HuffmanCompress(std::ifstream& in_file, std::ofstream& out_file, BitBuffer& bitBuffer, HuffmanDictionary& hd, HuffmanProperties& hp);
+    HuffmanCompress(std::ifstream& inFile, std::ofstream& outFile, BitBuffer& bitBuffer, HuffmanDictionary& hd, HuffmanProperties& hp);
 
     // Main function
     void compress_file();
@@ -32,8 +32,8 @@ public:
     uint64_t getBitsAmount() const {return m_bits_amount;}
 
 private:
-    std::ofstream& file;
-    std::ifstream& m_file;
+    std::ofstream& out_file;
+    std::ifstream& in_file;
     BitBuffer& bb;
     uint16_t m_prep_size = 0;
     uint8_t m_dict_amount = 0;

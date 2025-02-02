@@ -29,9 +29,9 @@ public:
 
 
 private:
-    std::ifstream m_file;
+    std::ifstream in_file;
     std::unordered_map<std::string, uint8_t> m_decoded{};
-    HuffmanDictionary m_huffman_dict = HuffmanDictionary(m_file);
+    HuffmanDictionary m_huffman_dict = HuffmanDictionary(in_file);
     HuffmanProperties m_huffman_properties;
 };
 

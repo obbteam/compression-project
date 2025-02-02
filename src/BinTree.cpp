@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+
+// Constructors for Node class
 Node::Node(const uint8_t &data, const int freq) : m_left{nullptr},
                                                   m_right{nullptr},
                                                   m_frequency{freq},
@@ -21,6 +23,8 @@ Node::Node(int freq, std::unique_ptr<Node> left, std::unique_ptr<Node> right)
       m_data{nullptr} {
 }
 
+
+// Get functions
 int Node::get_freq() const {
     return m_frequency;
 }
@@ -38,6 +42,8 @@ uint8_t *Node::get_data() {
 }
 
 
+
+// Constructor for BinTree class
 BinTree::BinTree(const std::vector<std::pair<uint8_t, int> > &list) : m_root(nullptr) {
     for (auto &it: list) {
         auto node = std::make_unique<Node>(it.first, it.second);
@@ -47,7 +53,8 @@ BinTree::BinTree(const std::vector<std::pair<uint8_t, int> > &list) : m_root(nul
     m_root = build_tree();
 }
 
-// todo use heap to reach O(n*log n)
+
+// Function for building a binary tree based on the frequency
 Node *BinTree::build_tree() {
     while (m_list.size() > 1) {
         auto node = std::make_unique<Node>(m_list[0]->get_freq() + m_list[1]->get_freq(), std::move(m_list[0]),
@@ -72,6 +79,8 @@ Node *BinTree::build_tree() {
 }
 
 
+
+// Print/get functions
 void BinTree::print_tree() {
     auto node = m_root;
     print_root(node);

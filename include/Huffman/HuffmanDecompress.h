@@ -7,7 +7,7 @@
 
 
 #include "fstream"
-#include "BitBuffer.h"
+#include "../BitBuffer.h"
 #include "string"
 #include "HuffmanDictionary.h"
 #include "HuffmanProperties.h"
@@ -16,7 +16,7 @@ class HuffmanDecompress {
 
 public:
     // Constructor
-    explicit HuffmanDecompress(std::ifstream& in_file);
+    explicit HuffmanDecompress(std::ifstream& inFile);
 
 
     // Helper functions
@@ -32,7 +32,7 @@ public:
     std::string getExtension() const {return m_extension;}
 
 private:
-    std::ifstream& m_file;
+    std::ifstream& in_file;
     uint16_t m_prep_size = 0;
     uint8_t m_dict_amount = 0;
     uint64_t m_bits_amount = 0;

@@ -6,16 +6,20 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(compression_project
         main.cpp
         src/Parser.cpp
-        src/huffman.cpp
+        src/Huffman/Huffman.cpp
         src/BinTree.cpp
         src/BitBuffer.cpp
-        src/LZW.cpp
-        src/HuffmanProperties.cpp
-        include/HuffmanProperties.h
-        src/HuffmanDictionary.cpp
-        include/HuffmanDictionary.h
-        src/HuffmanCompress.cpp
-        include/HuffmanCompress.h
-        src/HuffmanDecompress.cpp
-        include/HuffmanDecompress.h
+        src/LZW/LZW.cpp
+        src/Huffman/HuffmanProperties.cpp
+        include/Huffman/HuffmanProperties.h
+        src/Huffman/HuffmanDictionary.cpp
+        include/Huffman/HuffmanDictionary.h
+        src/Huffman/HuffmanCompress.cpp
+        include/Huffman/HuffmanCompress.h
+        src/Huffman/HuffmanDecompress.cpp
+        include/Huffman/HuffmanDecompress.h
+        src/LZW/LZW_compress.cpp
+        include/LZW/LZW_compress.h
+        src/LZW/LZW_decompress.cpp
+        include/LZW/LZW_decompress.h
 )

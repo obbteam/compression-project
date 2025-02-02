@@ -2,10 +2,10 @@
 // Created by Марк on 02.02.2025.
 //
 
-#include "../include/HuffmanDictionary.h"
+#include "../../include/Huffman/HuffmanDictionary.h"
 
 // Constructor
-HuffmanDictionary::HuffmanDictionary(std::ifstream& file): m_file(file), m_size{0} {}
+HuffmanDictionary::HuffmanDictionary(std::ifstream& file): in_file(file), m_size{0} {}
 
 
 
@@ -22,16 +22,18 @@ void HuffmanDictionary::create_encoded_dictionary() {
 
 
 
-// Helper functions
+// Function for building frequency table
 void HuffmanDictionary::build_frequency_table() {
-    while (m_file.peek() != EOF) {
+    while (in_file.peek() != EOF) {
         uint8_t byte;
-        m_file.read(reinterpret_cast<char *>(&byte), sizeof(byte));
+        in_file.read(reinterpret_cast<char *>(&byte), sizeof(byte));
         ++m_size;
         m_dictionary[byte]++;
     }
 }
 
+
+// Function for sorting the frequency table
 void HuffmanDictionary::sort_frequency_table() {
     m_sorted = std::vector<std::pair<uint8_t, int> >(m_dictionary.begin(), m_dictionary.end());
     std::sort(m_sorted.begin(), m_sorted.end(),
@@ -40,6 +42,8 @@ void HuffmanDictionary::sort_frequency_table() {
               });
 }
 
+
+// Building huffman frequency tree
 void HuffmanDictionary::build_huffman_tree() {
     auto object = BinTree(m_sorted);
     object.print_tree();
@@ -48,6 +52,7 @@ void HuffmanDictionary::build_huffman_tree() {
 }
 
 
+// Function for encoding all characters met in the file
 void HuffmanDictionary::encode_characters(Node *root_node) {
     if (root_node == nullptr) return;
 
@@ -56,9 +61,7 @@ void HuffmanDictionary::encode_characters(Node *root_node) {
 
 
 
-
-
-
+// Function for recursively creating codes for each character in the file
 void HuffmanDictionary::create_code(Node *root_node, uint8_t length, std::string &&code) {
     if (root_node == nullptr) return;
 
