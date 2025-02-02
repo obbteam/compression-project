@@ -10,4 +10,12 @@ add_executable(compression_project
         src/BinTree.cpp
         src/BitBuffer.cpp
         src/LZW.cpp
+        src/HuffmanProperties.cpp
+        include/HuffmanProperties.h
+        src/HuffmanDictionary.cpp
+        include/HuffmanDictionary.h
+        src/HuffmanCompress.cpp
+        include/HuffmanCompress.h
+        src/HuffmanDecompress.cpp
+        include/HuffmanDecompress.h
 )

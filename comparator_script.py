@@ -1,8 +1,8 @@
 import os
 
 # File paths
-file_bin_path = 'files/numbers.bin'
-file_groza_bin_path = 'files/numbers.groza.bin'
+file_bin_path = 'files/alice_in_wonderland.txt'
+file_groza_bin_path = 'files/alice_in_wonderland.groza.txt'
 
 
 

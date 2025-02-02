@@ -49,11 +49,6 @@ int main(int argc, char *argv[]) {
                     file.decompress();
                 } else {
                     file.compress();
-                    // file.build_frequency_table();
-                    // file.sort_frequency_table();
-                    // file.build_huffman_tree();
-                    // file.print_dict();
-                    file.print_encoded();
                 }
             } else if (parser.getCompressionMethod() == "--lzw") {
                 std::cout << "lzw" << std::endl;
