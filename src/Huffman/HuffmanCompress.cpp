@@ -77,7 +77,6 @@ void HuffmanCompress::write_encoded_data() {
         }
     }
     while (bb.get_size() != 0) bb.write_bit(0);
-    std::cout << "Finished" << std::endl;
 }
 
 

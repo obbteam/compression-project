@@ -27,7 +27,6 @@ int LZW_decompress::read_code(BitBuffer &bitBuffer) {
     for (int i = 0; i < 12; i++) {
         auto bit = bitBuffer.read_bit();
         if (bit == -1) {
-            std::cout << "Decompression done";
             return -1;
         }
         code = (code << 1) | bit;

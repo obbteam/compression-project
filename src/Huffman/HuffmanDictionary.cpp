@@ -46,7 +46,7 @@ void HuffmanDictionary::sort_frequency_table() {
 // Building huffman frequency tree
 void HuffmanDictionary::build_huffman_tree() {
     auto object = BinTree(m_sorted);
-    object.print_tree();
+    //object.print_tree();
     const auto root = object.get_root();
     encode_characters(root);
 }

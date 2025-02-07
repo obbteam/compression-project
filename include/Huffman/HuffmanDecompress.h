@@ -9,7 +9,6 @@
 #include "fstream"
 #include "../BitBuffer.h"
 #include "string"
-#include "HuffmanDictionary.h"
 #include "HuffmanProperties.h"
 
 class HuffmanDecompress {

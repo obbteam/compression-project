@@ -19,8 +19,10 @@ void HuffmanDecompress::read_header() {
     m_extension.resize(int(extension_size));
     in_file.read(&m_extension[0], extension_size);
 
+    /*
     std::cout << "\nBits amount: " << m_bits_amount << ", Prep size: " << m_prep_size
               << ", Dict amount: " << int(m_dict_amount) << ", Extension: " << m_extension << std::endl;
+    */
 }
 
 
@@ -50,8 +52,11 @@ void HuffmanDecompress::read_dictionary() {
         std::string encoded_message = read_huffman_code(encoded_size);
         // Store the mapping from bit-string -> character
         m_decoded[encoded_message] = character;
+
+        /*
         std::cout << character << " of the size " << uint8_t(encoded_size) << " or " << int(encoded_size) << " " <<
                   encoded_message << std::endl;
+        */
     }
 }
 

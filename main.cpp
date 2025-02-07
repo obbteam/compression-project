@@ -41,17 +41,16 @@ int main(int argc, char *argv[]) {
 
         for (const auto &file_name: parser.getInputFiles()) {
             if (parser.getCompressionMethod() == "--huffman") {
-                std::cout << "Huffman: " << std::endl;
+                std::cout << "Algorithm chosen: Huffman" << std::endl;
                 auto file = Huffman(file_name);
 
                 if (file.get_extension() == "groza") {
-                    // file.print_file();
                     file.decompress();
                 } else {
                     file.compress();
                 }
             } else if (parser.getCompressionMethod() == "--lzw") {
-                std::cout << "lzw" << std::endl;
+                std::cout << "Algorithm chosen: LZW" << std::endl;
                 auto file = lzw(file_name);
 
                 if (file.get_extension() == "groza") {

@@ -3,7 +3,9 @@
 
 
 // Constructor/destructor
-Huffman::Huffman(const std::string &file): in_file(file, std::ios::binary), m_huffman_properties(file) {
+Huffman::Huffman(const std::string &file): in_file(file, std::ios::binary),
+                                           m_huffman_properties(file),
+                                           m_huffman_dict(in_file) {
     if (!in_file.is_open()) {
         throw std::runtime_error("Input file stream is not open.");
     }
@@ -19,8 +21,10 @@ Huffman::~Huffman() {
 
 // Compress function
 void Huffman::compress() {
+    std::cout << "Starting compression of the file " << (m_huffman_properties.get_filename() + '.' + m_huffman_properties.get_extension()) << " ..." << std::endl;
 
-    std::ofstream out_file(m_huffman_properties.get_filename() + ".groza", std::ios::binary);
+    std::string filename = m_huffman_properties.get_filename() + ".groza";
+    std::ofstream out_file(filename, std::ios::binary);
 
     m_huffman_dict.create_encoded_dictionary();
 
@@ -31,17 +35,18 @@ void Huffman::compress() {
     auto huffmanCompress = HuffmanCompress(in_file, out_file, bb, m_huffman_dict, m_huffman_properties);
     huffmanCompress.compress_file();
 
-    std::cout << "The prep size is " << huffmanCompress.getPrepSize() << std::endl;
-    std::cout << "Bits amount in a new message is " << huffmanCompress.getBitsAmount() << std::endl;
-    std::cout << "The amount of elements in the dictionary is " << int(huffmanCompress.getDictAmount() + 1) << std::endl;
+    //std::cout << "The prep size is " << huffmanCompress.getPrepSize() << std::endl;
+    //std::cout << "Bits amount in a new message is " << huffmanCompress.getBitsAmount() << std::endl;
+    //std::cout << "The amount of elements in the dictionary is " << int(huffmanCompress.getDictAmount() + 1) << std::endl;
 
     out_file.close();
-
+    std::cout << "Compression done! Compressed file's name is " << filename << std::endl << std::endl;
 }
 
 
 // Decompress function
 void Huffman::decompress() {
+    std::cout << "Starting decompression of the file " << (m_huffman_properties.get_filename() + '.' + m_huffman_properties.get_extension()) << " ..." << std::endl;
     in_file.seekg(0, std::ios::beg);
 
     auto huffmanDecompress = HuffmanDecompress(in_file);
@@ -55,6 +60,8 @@ void Huffman::decompress() {
     huffmanDecompress.read_dictionary();
     huffmanDecompress.decode_file(out_file);
     out_file.close();
+    std::cout << "Decompression done! Decompressed file's name is " << filename << std::endl << std::endl;
+
 }
 
 

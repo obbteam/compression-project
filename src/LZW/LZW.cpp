@@ -27,6 +27,7 @@ std::string lzw::get_filename() {
 
 // Compresses the file, using LZW method
 void lzw::compress() {
+    std::cout << "Starting compression of the file " << (get_filename() + '.' + get_extension()) << " ..." << std::endl;
 
     auto filename = get_filename() + ".groza";
     std::ofstream out_file(filename, std::ios::binary);
@@ -42,12 +43,14 @@ void lzw::compress() {
     m_compress.finalize_encoding(bitBuffer);
 
     out_file.close();
+    std::cout << "Compression done! Compressed file's name is " << filename << std::endl << std::endl;
 }
 
 
 
 // Decompresses file, using LZW method
 void lzw::decompress() {
+    std::cout << "Starting decompression of the file " << (get_filename() + '.' + get_extension()) << " ..." << std::endl;
     auto m_decompress = LZW_decompress(m_file);
 
     std::string filename = get_filename() + ".groza." + m_decompress.read_extension();
@@ -65,6 +68,8 @@ void lzw::decompress() {
 
     int dict_size = 256;
     m_decompress.process_compressed_data(bitBuffer, cur, cur_code, dict_size, out_file);
+    out_file.close();
+    std::cout << "Decompression done! Compressed file's name is " << filename << std::endl << std::endl;
 }
 
 
