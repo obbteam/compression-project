@@ -40,7 +40,7 @@ void HuffmanCompress::write_header() {
 }
 
 
-// Fills up the fictionary for compressing and future decompressing
+// Fills up the dictionary for compressing and future decompressing
 void HuffmanCompress::write_dictionary() {
     for (const auto &i : m_encoded) {
         uint8_t symbol = i.first;

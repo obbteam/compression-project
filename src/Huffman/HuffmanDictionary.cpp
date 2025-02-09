@@ -17,11 +17,6 @@ void HuffmanDictionary::create_encoded_dictionary() {
 }
 
 
-
-
-
-
-
 // Function for building frequency table
 void HuffmanDictionary::build_frequency_table() {
     while (in_file.peek() != EOF) {
@@ -78,15 +73,11 @@ void HuffmanDictionary::create_code(Node *root_node, uint8_t length, std::string
             m_encoded.insert(std::make_pair(it->first, code));
         }
     }
-    // shift to the left once (creates 1 zero at the end)
+    // concatenates 0 at the end
     create_code(root_node->left(), length + 1, code + '0');
-    // shift to the left and create one at the end
+    // concatenates 1 at the end
     create_code(root_node->right(), length + 1, code + '1');
 }
-
-
-
-
 
 
 // Print functions

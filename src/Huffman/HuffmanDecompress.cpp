@@ -71,14 +71,6 @@ std::string HuffmanDecompress::read_huffman_code(uint8_t encoded_size) {
         encoded_message.push_back(bb.read_bit() ? '1' : '0');
     }
 
-    // Because you padded each code to a byte boundary in compress(), you need to
-    // skip the leftover bits within that last partial byte (if the code length wasn't
-    // a multiple of 8). However, since you did:
-    //
-    //    while (bb.get_size() != 0) bb.write_bit(0);
-    //
-    // in compress(), each code was padded out to a full byte. So we must "consume"
-    // those leftover padding bits from the BitBuffer:
     int mod = encoded_size % 8;
     if (mod != 0) {
         int leftover = 8 - mod;
